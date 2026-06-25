@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master RV Diag - Universal & Multilingual System</title>
+         <!-- Motor Gráfico Local Blindado contra Bloqueos de Red -->
+    <style>
+        /* =========================================================================
+           SISTEMA DE DISEÑO PREMIUM CORE: "DEEP CYBER BLUE" CON EFECTO CRISTAL
+           ========================================================================= */
+        body { 
+            background: linear-gradient(135deg, #020617 0%, #0b1329 50%, #030712 100%) !important; 
+            color: #f8fafc !important; 
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; 
+            padding-bottom: 60px;
+            min-height: 100vh;
+
+        }
+        main { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 1rem; 
+            max-width: 32rem; 
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+        
+        /* Formulario Inicial de Admisión: Diseño Elegante Tipo Ficha Técnica */
+        .bg-slate-900\/80 { 
+            background: rgba(15, 23, 42, 0.65) !important; 
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border: 2px solid rgba(59, 130, 246, 0.25) !important; 
+            border-radius: 1.5rem !important; 
+            padding: 1.5rem !important; 
+            margin-bottom: 1.5rem !important; 
+            width: 100%; 
+            box-sizing: border-box;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7) !important;
+        }
+        #lbl-form-titulo { 
+            font-size: 0.95rem !important; 
+            font-weight: 900 !important; 
+            color: #38bdf8 !important; 
+            text-transform: uppercase; 
+            letter-spacing: 0.08em;
+            margin-bottom: 1.25rem; 
+            border-bottom: 2px solid rgba(56, 189, 248, 0.2); 
+            padding-bottom: 0.6rem; 
+        }
+        .grid-cols-2 label { 
+            font-size: 0.85rem !important; 
+            font-weight: 900 !important; 
+            color: #94a3b8 !important; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem; 
+            display: block; 
+        }
+        .grid-cols-2 input, .grid-cols-2 select { 
+            width: 100%;
+            background-color: #020617 !important; 
+            border: 2px solid rgba(71, 85, 105, 0.6) !important; 
+            border-radius: 0.85rem !important; 
+            padding: 0.9rem !important; 
+            color: #ffffff !important; 
+            font-size: 1.05rem !important; 
+            font-weight: 700 !important; 
+            outline: none; 
+            box-sizing: border-box;
+            transition: all 0.25s ease;
+        }
+        .grid-cols-2 input:focus, .grid-cols-2 select:focus { 
+            border-color: #3b82f6 !important; 
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4) !important;
+        }
+
+        /* Consola de Diagnóstico: Efecto "Glow" y Contraste de Laboratorio */
+        .bg-gray-800 { 
+            background: linear-gradient(180deg, #090d16 0%, #05070c 100%) !important; 
+            border: 2px solid rgba(99, 102, 241, 0.3) !important; 
+            border-radius: 2rem !important; 
+            padding: 1.75rem !important; 
+            width: 100%; 
+            box-sizing: border-box; 
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(99, 102, 241, 0.1) !important; 
+        }
+        
+        /* Letrero de Sistema (Badge) Premium */
+        #badge-texto { 
+            background-color: rgba(99, 102, 241, 0.15) !important; 
+            color: #818cf8 !important; 
+            font-size: 0.85rem !important; 
+            font-weight: 900 !important; 
+            letter-spacing: 0.12em; 
+            padding: 0.5rem 1rem !important; 
+            border-radius: 9999px !important; 
+            border: 1px solid rgba(99, 102, 241, 0.4) !important; 
+            display: inline-block; 
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        /* TEXTO DE PREGUNTA / SOLUCIÓN: GIGANTE, LUMINOSO Y ULTRA-LEGIBLE */
+        #texto-pregunta { 
+            color: #ffffff !important; 
+            font-size: 1.45rem !important; 
+            font-weight: 900 !important; 
+            line-height: 1.55 !important; 
+            text-align: left !important; 
+            margin-top: 0.5rem !important; 
+            margin-bottom: 1.75rem !important;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+        }
+
+                /* PANEL DE ACCIÓN INTERMEDIA: Fuerza a que los botones dinámicos se apilen verticalmente al 100% de ancho */
+        .grid-cols-2 { 
+            display: flex !important; 
+            flex-direction: column !important; 
+            gap: 1rem !important; 
+            margin-top: 1.25rem !important; 
+            width: 100% !important; 
+        }
+        
+        /* REGLAZO MAESTRO DE TIPOGRAFÍA: Letra gigante, fondo oscuro premium y cero desbordes */
+        .grid-cols-2 button, #contenedor-botones button { 
+            width: 100% !important;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+            border: 2px solid #3b82f6 !important;
+            color: #ffffff !important;
+            font-size: 1.25rem !important; 
+            font-weight: 900 !important; 
+            text-transform: uppercase !important; 
+            letter-spacing: 0.05em !important; 
+            padding: 1.25rem !important;
+            border-radius: 1.25rem !important;
+            line-height: 1.4 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4) !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Mantener los colores nativos de los botones SÍ y NO reales al final del camino */
+        .grid-cols-2 #btn-si, #contenedor-botones #btn-si { background: linear-gradient(180deg, #10b981 0%, #059669 100%) !important; border-color: #10b981 !important; }
+        .grid-cols-2 #btn-no, #contenedor-botones #btn-no { background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%) !important; border-color: #ef4444 !important; }
+
+        /* PANEL INFERIOR SECTORAL DE LOS 10 SISTEMAS: Estilo Barra de Aplicación Futurista */
+        .mt-6 { 
+            margin-top: 2.5rem; 
+            padding-top: 1.75rem; 
+            border-top: 2px solid rgba(71, 85, 105, 0.3); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.85rem; 
+            width: 100%; 
+        }
+        .mt-6 button { 
+            width: 100%;
+            text-align: center; 
+            font-size: 1rem !important; 
+            font-weight: 900 !important; 
+            letter-spacing: 0.06em;
+            padding: 1.1rem !important; 
+            border-radius: 1.25rem !important; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        #sel-ac { color: #f59e0b !important; background: rgba(245, 158, 11, 0.08) !important; border: 2px solid rgba(245, 158, 11, 0.3) !important; }
+        #sel-dc { color: #06b6d4 !important; background: rgba(6, 182, 212, 0.08) !important; border: 2px solid rgba(6, 182, 212, 0.3) !important; }
+        #sel-solar { color: #10b981 !important; background: rgba(16, 185, 129, 0.08) !important; border: 2px solid rgba(16, 185, 129, 0.3) !important; }
+        #sel-plomeria { color: #3b82f6 !important; background: rgba(59, 130, 246, 0.08) !important; border: 2px solid rgba(59, 130, 246, 0.3) !important; }
+        #sel-chasis { color: #6366f1 !important; background: rgba(99, 102, 241, 0.08) !important; border: 2px solid rgba(99, 102, 241, 0.3) !important; }
+        #sel-refri { color: #f97316 !important; background: rgba(249, 115, 22, 0.08) !important; border: 2px solid rgba(249, 115, 22, 0.3) !important; }
+        #sel-acondicionado { color: #f43f5e !important; background: rgba(244, 63, 94, 0.08) !important; border: 2px solid rgba(244, 63, 94, 0.3) !important; }
+        #sel-hidraulica { color: #eab308 !important; background: rgba(234, 179, 8, 0.08) !important; border: 2px solid rgba(234, 179, 8, 0.3) !important; }
+        #sel-slides { color: #10b981 !important; background: rgba(16, 185, 129, 0.08) !important; border: 2px solid rgba(16, 185, 129, 0.3) !important; }
+        #sel-paneles { color: #3b82f6 !important; background: rgba(59, 130, 246, 0.08) !important; border: 2px solid rgba(59, 130, 246, 0.3) !important; }
+        
+        .mt-6 button:active { transform: scale(0.96) !important; filter: brightness(1.2); }
+
+        /* Botón de Reporte PDF Realzado en Azul Eléctrico */
+        #contenedor-reporte-pdf button { 
+            background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%) !important; 
+            color: #ffffff !important; 
+            font-size: 1.1rem !important; 
+            font-weight: 900 !important; 
+            padding: 1.25rem !important; 
+            border-radius: 1.25rem !important; 
+            width: 100%; 
+            border: 1px solid rgba(59, 130, 246, 0.5) !important; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            letter-spacing: 0.08em;
+            box-shadow: 0 10px 20px -5px rgba(29, 78, 216, 0.5) !important;
+        }
+
+        /* Asegurar el ocultamiento del reporte técnico impreso en la interfaz viva */
+        #reporte-tecnico-impresion { display: none !important; }
+    </style>
+
+
+    <!-- Conexión Oficial con las 10 Bases de Datos Maestras Universales Bilingües -->
+    <script src="modulos/1_distribucion_ac.js"></script>
+    <script src="modulos/2_baterias_y_dc.js"></script>
+    <script src="modulos/3_inversores_solar.js"></script>
+    <script src="modulos/4_plomeria_fluidos.js"></script>
+    <script src="modulos/5_mecanismos_chasis.js"></script>
+    <script src="modulos/6_refrigeracion_gas.js"></script>
+    <script src="modulos/7_aire_acondicionado.js"></script>
+    <script src="modulos/8_niveladores_hidraulica.js"></script>
+    <script src="modulos/9_slide_outs.js"></script>
+    <script src="modulos/10_paneles_digitales.js"></script>
+
+    <style>
+               /* Reglas CSS Oficiales de Alta Gama para forzar la impresión limpia en 2 Hojas Independientes */
+        @media print {
+            body { 
+                background: white !important; 
+                background-color: white !important; 
+                color: black !important; 
+                font-size: 13px !important; 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
+            }
+            header, #contenedor-botones, div.mt-6, button, #contenedor-reporte-pdf, #formulario-cliente-unidad, .bg-gray-800, #pantalla-diagnostico, main, body > *:not(#reporte-tecnico-impresion) { 
+                display: none !important; 
+                visibility: hidden !important; 
+            }
+            #reporte-tecnico-impresion, #reporte-tecnico-impresion * { 
+                display: block !important; 
+                visibility: visible !important; 
+                color: black !important;
+                background-color: white !important;
+            }
+            .hoja-interno { 
+                page-break-before: always !important; 
+                break-before: page !important;
+                margin-top: 0 !important;
+                padding-top: 20px !important;
+            }
+        }
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col font-sans select-none">
+
+    <!-- Encabezado de la App con Switch de Idioma Automatizado y Texto Grande de Alta Visibilidad -->
+    <header class="bg-slate-900 p-5 shadow-xl border-b border-blue-600/40 sticky top-0 z-50 flex justify-between items-center max-w-lg mx-auto w-full rounded-b-xl">
+        <div class="text-left">
+            <h1 class="text-xl font-black tracking-wider text-white uppercase flex items-center gap-1">👨‍🔧 MASTER RV DIAG</h1>
+            <p id="subtitulo-app" class="text-xs text-blue-400 font-bold mt-1">Lógica Oficial ANSI/RVIA/NFPA 1192</p>
+        </div>
+        <button onclick="cambiarIdioma()" id="btn-idioma" class="bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 text-sm font-black py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center gap-1.5 shadow-lg active:scale-95 uppercase tracking-wider">
+            🇺🇸 ENGLISH
+        </button>
+    </header>
+
+    <!-- Contenedor Principal Dinámico -->
+    <main class="flex-1 flex flex-col items-center justify-center p-4 max-w-lg mx-auto w-full">
+        
+        <!-- FORMULARIO INICIAL DE ALTA GAMA: Datos del Cliente y de la Unidad (Se oculta al imprimir) -->
+        <div id="formulario-cliente-unidad" class="bg-slate-900/80 p-5 rounded-2xl border border-blue-500/20 w-full mb-5 shadow-xl">
+            <h3 id="lbl-form-titulo" class="text-xs font-black tracking-widest text-blue-400 uppercase border-b border-blue-500/20 pb-2 mb-4">📝 Registro Inicial de Servicio / Tech Intake Log</h3>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="col-span-2">
+                    <label id="lbl-form-cliente" class="block text-[10px] font-black tracking-wider text-gray-400 uppercase mb-1">Nombre del Cliente / Customer Name</label>
+                    <input type="text" id="input-cliente" placeholder="John Doe" class="w-full bg-slate-950 border border-gray-700 rounded-lg p-2.5 text-white font-bold focus:border-blue-500 outline-none">
+                </div>
+                <div>
+                    <label id="lbl-form-tipo" class="block text-[10px] font-black tracking-wider text-gray-400 uppercase mb-1">Tipo de Unidad / RV Type</label>
+                    <select id="input-tipo" class="w-full bg-slate-950 border border-gray-700 rounded-lg p-2.5 text-white font-bold focus:border-blue-500 outline-none">
+                        <option value="Motorhome Class A">Motorhome Class A</option>
+                        <option value="Motorhome Class B">Motorhome Class B</option>
+                        <option value="Motorhome Class C">Motorhome Class C</option>
+                        <option value="Fifth Wheel">Fifth Wheel</option>
+                        <option value="Travel Trailer">Travel Trailer</option>
+                    </select>
+                </div>
+                <div>
+                    <label id="lbl-form-marca" class="block text-[10px] font-black tracking-wider text-gray-400 uppercase mb-1">Marca y Modelo / Make & Model</label>
+                    <input type="text" id="input-marca" placeholder="Winnebago / Jayco" class="w-full bg-slate-950 border border-gray-700 rounded-lg p-2.5 text-white font-bold focus:border-blue-500 outline-none">
+                </div>
+                <div class="col-span-2">
+                    <label id="lbl-form-anio" class="block text-[10px] font-black tracking-wider text-gray-400 uppercase mb-1">Año de la Unidad / RV Model Year</label>
+                    <input type="number" id="input-anio" placeholder="2024" class="w-full bg-slate-950 border border-gray-700 rounded-lg p-2.5 text-white font-bold focus:border-blue-500 outline-none">
+                </div>
+            </div>
+        </div>
+
+        <!-- CONSOLA CENTRAL DE DIAGNÓSTICO -->
+        <div class="bg-gray-800 p-5 rounded-2xl shadow-2xl border border-gray-700/60 w-full text-center">
+            <div id="pantalla-diagnostico">
+                <span id="badge-texto" class="bg-blue-600/20 text-blue-400 text-xs font-black tracking-widest px-3 py-1.5 rounded-full border border-blue-500/30 uppercase">
+                    CALEFACCIÓN FORZADA / FORCED HEAT
+                </span>
+                
+                <h3 id="texto-pregunta" class="text-base font-black text-white my-5 leading-relaxed text-left">
+                    Paso 1: Mida voltaje entre el cable ROJO (+) y NEGRO (-) en el arnés del horno. ¿El multímetro marca 12.0V DC o más con el soplador encendido?
+                </h3>
+
+                <div id="contenedor-imagen" class="w-full hidden overflow-hidden rounded-xl border border-gray-700/40 shadow-inner mb-4 transition-all duration-300"></div>
+
+                <div id="contenedor-reporte-pdf" class="hidden my-4">
+                    <button onclick="generarPDFReporte()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 px-4 rounded-xl transition shadow-lg text-xs uppercase tracking-widest active:scale-95 flex items-center justify-center gap-2">
+                        📋 <span id="txt-btn-reporte">Generar Reporte Impresora / PDF</span>
+                    </button>
+                </div>
+
+                <div id="contenedor-botones" class="grid grid-cols-2 gap-3 mt-5">
+                    <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-900/20 uppercase tracking-wider">
+                        👍 SÍ / YES
+                    </button>
+                    <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-rose-900/20 uppercase tracking-wider">
+                        👎 NO / NO
+                    </button>
+                </div>
+            </div>
+                <!-- PANEL DE SELECTORES DE SISTEMA ALTERNO (Letras Grandes de Alta Visibilidad de Campo) -->
+                <div class="mt-6 pt-5 border-t border-gray-700/60 flex flex-col space-y-2.5 items-center">
+                    <button onclick="cargarDistribucionAC()" id="sel-ac" class="w-full text-xs font-black tracking-widest text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 py-3 px-4 rounded-xl border border-amber-500/20 transition-all uppercase">
+                        ⚡ Cambiar a Sistema 120V AC (Transfer Switch)
+                    </button>
+                    <button onclick="cargarBateriasYDC()" id="sel-dc" class="w-full text-xs font-black tracking-widest text-cyan-400 hover:text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 py-3 px-4 rounded-xl border border-cyan-500/20 transition-all uppercase">
+                        🔋 Cambiar a Sistema 12V DC (Centro WFCO)
+                    </button>
+                    <button onclick="cargarInversoresSolar()" id="sel-solar" class="w-full text-xs font-black tracking-widest text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 py-3 px-4 rounded-xl border border-emerald-500/20 transition-all uppercase">
+                        ☀️ Cambiar a Sistema Solar (Victron MPPT)
+                    </button>
+                    <button onclick="cargarPlomeriaFluidos()" id="sel-plomeria" class="w-full text-xs font-black tracking-widest text-blue-400 hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 py-3 px-4 rounded-xl border border-blue-500/20 transition-all uppercase">
+                        💧 Cambiar a Plomería y Calentadores (Atwood)
+                    </button>
+                    <button onclick="cargarMecanismosChasis()" id="sel-chasis" class="w-full text-xs font-black tracking-widest text-indigo-400 hover:text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/20 py-3 px-4 rounded-xl border border-indigo-500/20 transition-all uppercase">
+                        ⚙️ Cambiar a Mecanismos y Chasis (Kwikee)
+                    </button>
+                    <button onclick="cargarRefrigeracionGas()" id="sel-refri" class="w-full text-xs font-black tracking-widest text-orange-400 hover:text-orange-300 bg-orange-500/10 hover:bg-orange-500/20 py-3 px-4 rounded-xl border border-orange-500/20 transition-all uppercase">
+                        🔥 Cambiar a Refrigeración a Gas/120V (Dometic)
+                    </button>
+                    <button onclick="cargarAireAcondicionado()" id="sel-acondicionado" class="w-full text-xs font-black tracking-widest text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 py-3 px-4 rounded-xl border border-rose-500/20 transition-all uppercase">
+                        ❄️ Cambiar a Aire Acondicionado (Coleman)
+                    </button>
+                    <button onclick="cargarNiveladoresHidraulica()" id="sel-hidraulica" class="w-full text-xs font-black tracking-widest text-yellow-500 hover:text-yellow-400 bg-yellow-500/10 hover:bg-yellow-500/20 py-3 px-4 rounded-xl border border-yellow-500/20 transition-all uppercase">
+                        ⚙️ Cambiar a Niveladores e Hidráulica (LCI)
+                    </button>
+                    <button onclick="cargarSlideOuts()" id="sel-slides" class="w-full text-xs font-black tracking-widest text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 py-3 px-4 rounded-xl border border-emerald-500/20 transition-all uppercase">
+                        ⚙️ Cambiar a Extensiones y Slide-Outs (Schwintek)
+                    </button>
+                    <button onclick="cargarPanelesDigitales()" id="sel-paneles" class="w-full text-xs font-black tracking-widest text-blue-400 hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 py-3 px-4 rounded-xl border border-blue-500/20 transition-all uppercase">
+                        📱 Cambiar a Paneles Digitales Multiplexados
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================================================================================= -->
+    <!-- SECCIÓN DE INFRAESTRUCTURA BIEN ESTRUCTURADA PARA REPORTE PDF DE DOS HOJAS SEPARADAS -->
+    <!-- ================================================================================= -->
+    <div id="reporte-tecnico-impresion" class="hidden text-black text-left p-6 font-serif border-2 border-black mt-8 bg-white max-w-xl mx-auto rounded">
+        
+        <!-- HOJA 1: INFORME CERTIFICADO PARA EL CLIENTE -->
+        <div class="hoja-cliente">
+            <div class="border-b-2 border-black pb-4 mb-4 text-center">
+                <h2 class="text-xl font-bold tracking-wider uppercase">👨‍🔧 MASTER RV DIAG - CLIENT EVALUATION SLIP</h2>
+                <p class="text-xs font-mono mt-1" id="pdf-fecha-emision">Date: --/--/----</p>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 text-xs font-sans mb-6 bg-gray-100 p-3 rounded border border-gray-300">
+                <div>
+                    <p class="font-black uppercase tracking-wider text-blue-700">Taller / Service Shop:</p>
+                    <p class="italic text-gray-700">Mobile RV Certified Technical Service</p>
+                </div>
+                <div>
+                    <p class="font-black uppercase tracking-wider text-blue-700">Cliente / Customer:</p>
+                    <p class="font-bold text-gray-900" id="pdf-val-cliente-h1">--</p>
+                </div>
+                <div>
+                    <p class="font-black uppercase tracking-wider text-blue-700">Unidad / RV Type:</p>
+                    <p class="font-bold text-gray-900" id="pdf-val-tipo-h1">--</p>
+                </div>
+                <div>
+                    <p class="font-black uppercase tracking-wider text-blue-700">Año - Marca - Modelo / RV Specs:</p>
+                    <p class="font-bold text-gray-900" id="pdf-val-specs-h1">--</p>
+                </div>
+            </div>
+
+            <div class="mb-6 font-sans">
+                <h4 class="text-xs font-black uppercase text-gray-800 tracking-wider border-b border-gray-400 pb-1 mb-2" id="pdf-lbl-diagnostico">Resultado del Diagnóstico / Diagnostic Evaluation:</h4>
+                <div id="pdf-contenido-solucion" class="text-xs leading-relaxed text-gray-900 font-medium bg-gray-50 p-3 rounded border border-gray-200"></div>
+            </div>
+
+            <div id="pdf-diagrama-adjunto" class="mb-6 bg-slate-950 p-4 rounded-xl border border-gray-700 text-center text-white hidden"></div>
+
+            <div class="grid grid-cols-2 gap-12 text-center text-[10px] font-sans pt-6 border-t border-gray-300 mt-12">
+                <div class="border-t border-black pt-2 font-bold uppercase" id="pdf-firma-tecnico">Firma del Técnico / Tech Signature</div>
+                <div class="border-t border-black pt-2 font-bold uppercase" id="pdf-firma-cliente">Conformidad Cliente / Customer Approval</div>
+            </div>
+        </div>
+
+        <!-- HOJA 2: ESTIMADOR DE COSTOS Y WORK ORDER (SECRETO PARA USO INTERNO DEL TALLER) -->
+        <div class="hoja-interno" style="page-break-before: always;">
+            <div class="border-b-2 border-black pb-4 mb-6 text-center">
+                <h2 class="text-lg font-black tracking-wider uppercase text-red-700">⚠️ INTERNAL USE ONLY - TECH & SUPERVISOR WORK ORDER</h2>
+                <p class="text-[10px] font-mono mt-0.5 text-gray-500">Flat-Rate Calculator & Supervisor Verification Log</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 text-xs font-sans mb-6 bg-gray-100 p-3 rounded border border-gray-300">
+                <div>
+                    <p class="font-black uppercase tracking-wider text-red-700">Mecánico Asignado / Field Tech:</p>
+                    <p class="italic text-gray-700">Certified RV Mobile Specialist</p>
+                </div>
+                <div>
+                    <p class="font-black uppercase tracking-wider text-red-700">ID Servicio / Ticket Job:</p>
+                    <p id="pdf-val-ticket" class="font-mono font-bold text-gray-900">#RV-7792</p>
+                </div>
+            </div>
+
+            <div class="mb-6 font-sans">
+                <h4 class="text-xs font-black uppercase text-gray-800 tracking-wider border-b border-gray-400 pb-1 mb-2" id="pdf-lbl-estimado">Cálculo de Tiempos de Mano de Obra (Flat-Rate):</h4>
+                <div class="bg-red-50 p-3 rounded border border-red-200 grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase" id="pdf-lbl-base">Tiempo Base Intercambio:</p>
+                        <p class="font-black text-gray-900" id="pdf-val-base">1.0 Hr</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase" id="pdf-lbl-obstructivo">Trabas de Desarme Obstructivo:</p>
+                        <p class="font-black text-red-600" id="pdf-val-obstructivo">+1.5 Hrs</p>
+                    </div>
+                    <div class="col-span-2 border-t border-red-200 pt-2 mt-1 flex justify-between items-center">
+                        <p class="font-black text-gray-900 uppercase tracking-wide" id="pdf-lbl-total-hrs">Tiempo Total a Facturar:</p>
+                        <p class="font-black text-base text-red-700" id="pdf-val-total-hrs">2.5 Hrs Totales</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Costos Promedio de Refacciones del Mercado de EUA -->
+            <div class="mb-6 font-sans">
+                <h4 class="text-xs font-black uppercase text-gray-800 tracking-wider border-b border-gray-400 pb-1 mb-2" id="pdf-lbl-costos">Análisis de Costos de Refacción (Promedio):</h4>
+                <div class="bg-blue-50 p-3 rounded border border-blue-200 text-xs flex justify-between items-center">
+                    <div>
+                        <p class="font-bold text-blue-900 uppercase tracking-wide" id="pdf-lbl-refaccion">Rango Estimado del Componente:</p>
+                        <p class="text-[10px] text-gray-600" id="pdf-lbl-nota-costo">Valores estándar en distribuidores de EUA (MSRP).</p>
+                    </div>
+                    <p class="font-black text-base text-blue-700" id="pdf-val-costo-promedio">$180.00 - $350.00 USD</p>
+                </div>
+            </div>
+
+            <!-- Notas de Control para el Supervisor -->
+            <div class="font-sans text-[11px] text-gray-600 bg-amber-50 p-3 rounded border border-amber-200 leading-relaxed">
+                <p class="font-bold text-amber-800 uppercase tracking-wide mb-1" id="pdf-lbl-trabas">📋 INSTRUCCIONES DE SEGUIMIENTO PARA EL SUPERVISOR:</p>
+                <p id="pdf-val-trabas">Verifique que el técnico limpie terminales de tierras galvánicas y purgue el aire en líneas antes de dar de alta la reparación. Cargue las horas reales reportadas en este slip al sistema de nómina interna del taller.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================================= -->
+    <!-- LÓGICA CORE MAESTRA DE DIAGNÓSTICO E INTELIGENCIA BILINGÜE Y CORPORATIVA -->
+    <!-- ================================================================================= -->
+    <script>
+        // Variables globales de control de estado de la aplicación
+        let idiomaActual = "es"; // Idioma por defecto: Español
+        let nodoActual = "inicio";
+
+        // Base de datos integrada de Energía Solar (Bypass nativo de seguridad expandido y corregido)
+        
+        // Árbol de diagnóstico nativo de Calefacción Forzada (Bilingüe y Enriquecido)
+        let arbolDiagnostico = {
+            "inicio": {
+                pregunta_es: "Paso 1: Mida voltaje entre el cable ROJO (+) y NEGRO (-) en el arnés del horno. ¿El multímetro marca 12.0V DC o más con el soplador encendido?",
+                pregunta_en: "Step 1: Measure voltage between the RED (+) and BLACK (-) wires at the furnace harness. Does the multimeter read 12.0V DC or higher with the blower running?",
+                si: "probar_sail_switch",
+                no: "error_voltaje_bajo"
+            },
+            "probar_sail_switch": {
+                pregunta_es: "Paso 2: Localice el cable de salida del Sail Switch (Interruptor de Vela). Con el soplador botando aire con fuerza, ¿mide 12V DC hacia la tarjeta de control?",
+                pregunta_en: "Step 2: Locate the output wire from the Sail Switch. With the blower forcing air, does it measure 12V DC going to the control board?",
+                si: "probar_high_limit",
+                no: "error_sail_switch"
+            },
+            "probar_high_limit": {
+                pregunta_es: "Paso 3: Mida el voltaje en el cable que regresa a la tarjeta desde el High-Limit Switch (Interruptor de Límite Alto). ¿Hay 12V DC constantes?",
+                pregunta_en: "Step 3: Measure the voltage on the wire returning to the board from the High-Limit Switch. Is there constant 12V DC present?",
+                si: "solucion_tarjeta_defectuosa",
+                no: "error_high_limit_abierto"
+            },
+            "error_voltaje_bajo": {
+                solucion_es: "❌ DIAGNÓSTICO MAESTRO UNIVERSAL: Batería críticamente descargada, fusible quemado en el panel principal o caída de tensión crítica en las vías de instalación del RV.",
+                solucion_en: "❌ UNIVERSAL MASTER DIAGNOSIS: Battery critically discharged, blown fuse in the main panel, or critical voltage drop along the RV installation lines.",
+                imagen: "https://unsplash.com",
+                final: true
+            },
+            "error_sail_switch": {
+                solucion_es: "❌ DIAGNÓSTICO MAESTRO UNIVERSAL: El Sail Switch no cierra su contacto mecánico. Limpie pelusas o nidos de insectos en el soplador, compruebe que la paleta no esté doblada o reemplace el interruptor.",
+                solucion_en: "❌ UNIVERSAL MASTER DIAGNOSIS: The Sail Switch fails to close its mechanical contact. Clean lint or debris from the blower wheel, check for a bent paddle, or replace the switch.",
+                imagen: "https://unsplash.com",
+                final: true
+            },
+            "error_high_limit_abierto": {
+                solucion_es: "❌ DIAGNÓSTICO MAESTRO UNIVERSAL: El interruptor Hi-Limit está abierto de forma permanente. Reemplace el componente o inspeccione obstrucciones severas en los ductos de aire que retienen el calor.",
+                solucion_en: "❌ UNIVERSAL MASTER DIAGNOSIS: The Hi-Limit switch is permanently open. Replace the component or inspect for severe blockages in the air ducts holding back heat.",
+                imagen: "https://unsplash.com",
+                final: true
+            },
+            "solucion_tarjeta_defectuosa": {
+                solucion_es: "❌ DIAGNÓSTICO MAESTRO UNIVERSAL: Todos los sensores de seguridad física entregaron 12V DC a la tarjeta pero no hay chispa DSI ni gas. La tarjeta electrónica integrada está quemada. Reemplácela.",
+                solucion_en: "❌ UNIVERSAL MASTER DIAGNOSIS: All physical safety sensors delivered 12V DC to the board but there is no DSI spark or gas ignition. The integrated electronic board is fried. Replace it.",
+                imagen: "https://unsplash.com",
+                final: true
+            }
+        };
+        // FUNCIÓN MAESTRA CERTIFICADA: Motor único de procesamiento, reportes y tolerancia a fallos
+        function procesarRespuesta(opcion) {
+            const datosNodo = arbolDiagnostico[nodoActual];
+            if (!datosNodo) return;
+
+            const siguienteNodoKey = datosNodo[opcion];
+            const siguienteNodo = arbolDiagnostico[siguienteNodoKey];
+
+            // =================================================================================
+            // ESCUDO DE INGENIERÍA MÁSTER CONTRA ERRORES DE TRADUCCIÓN O NODOS NO DEFINITIVOS
+            // Evita de forma absoluta que la pantalla se congele ante cualquier salto fantasma
+            // =================================================================================
+            if (!siguienteNodo) {
+                document.getElementById("texto-pregunta").innerHTML = (idiomaActual === "es")
+                    ? `⚠️ <b>AVISO DE CONTROL DE CALIDAD:</b> El paso de salto [<b>${siguienteNodoKey}</b>] no está definido en este archivo de módulo. Corrija el árbol de decisiones.`
+                    : `⚠️ <b>QUALITY CONTROL NOTICE:</b> The jump step [<b>${siguienteNodoKey}</b>] is not defined in this module file. Please update the decision tree.`;
+                return;
+            }
+
+            // Si el siguiente paso es una solución definitiva (Final del camino lógico)
+            if (siguienteNodo.final) {
+                // Imprime la solución técnica certificada en la pantalla
+                document.getElementById("texto-pregunta").innerHTML = siguienteNodo["solucion_" + idiomaActual];
+                
+                // Inyecta el marcador de posición o diagrama técnico bilingüe
+                const contenedorImg = document.getElementById("contenedor-imagen");
+                if (siguienteNodo.imagen) {
+                    contenedorImg.style.display = "block";
+                    contenedorImg.innerHTML = `
+                        <div class="w-full h-44 bg-slate-950 rounded-xl border border-gray-700/50 flex flex-col items-center justify-center p-4 my-3 text-center">
+                            <span class="text-3xl mb-2">📊</span>
+                            <p class="text-sm font-black text-blue-400 uppercase tracking-widest">Reference Schematic Attached</p>
+                            <p class="text-xs font-bold text-gray-300 mt-2 max-w-[320px] leading-relaxed">
+                                ${idiomaActual === "es" 
+                                    ? "Consulte el manual técnico oficial de la marca para verificar los diagramas de pines, presiones de fluidos y escalas del multímetro." 
+                                    : "Consult the official manufacturer technical manual to verify pinouts, fluid pressures, and multimeter scales."}
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    contenedorImg.style.display = "none";
+                    contenedorImg.innerHTML = "";
+                }
+
+                // DISPARADOR DE ALTA GAMA: Enciende físicamente el botón azul de reportes en la interfaz
+                const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
+                if (divReporteBtn) {
+                    divReporteBtn.classList.remove("hidden");
+                    const txtBtn = document.getElementById("txt-btn-reporte");
+                    if (txtBtn) {
+                        txtBtn.innerText = (idiomaActual === "es") 
+                            ? "Generar Reporte Impresora / PDF" 
+                            : "Generate Printer Report / PDF";
+                    }
+                }
+
+                                // Ejecuta la orden nativa centralizada para inyectar el botón de reinicio bilingüe perfecto
+                inyectarBotonNuevoDiagnostico();
+
+
+
+            } else {
+                // Si el camino continúa, avanza de forma fluida a la siguiente pregunta de control
+                nodoActual = siguienteNodoKey;
+                document.getElementById("texto-pregunta").innerText = siguienteNodo["pregunta_" + idiomaActual];
+                document.getElementById("contenedor-imagen").style.display = "none";
+            }
+        }
+        // Cerebro bilingüe: Cambia el idioma global de la app y redibuja la pantalla actual de forma sincronizada
+        function cambiarIdioma() {
+            idiomaActual = (idiomaActual === "es") ? "en" : "es";
+            
+            // Actualiza el texto y la apariencia del botón en la cabecera
+            const btn = document.getElementById("btn-idioma");
+            if (btn) btn.innerHTML = (idiomaActual === "es") ? "🇺🇸 ENGLISH" : "🇲🇽 ESPAÑOL";
+            
+            // Traduce el subtítulo del encabezado oficial
+            const sub = document.getElementById("subtitulo-app");
+            if (sub) sub.innerText = (idiomaActual === "es") ? "Lógica Oficial ANSI/RVIA/NFPA 1192" : "Official ANSI/RVIA/NFPA 1192 Logic";
+            
+            // TRADUCCIÓN INTERACTIVA DE LAS ETIQUETAS DEL FORMULARIO DE ADMISIÓN DEL CLIENTE
+            if (document.getElementById("lbl-form-titulo")) document.getElementById("lbl-form-titulo").innerText = (idiomaActual === "es") ? "📝 Registro Inicial de Servicio / Tech Intake Log" : "📝 Initial Service Registry / Tech Intake Log";
+            if (document.getElementById("lbl-form-cliente")) document.getElementById("lbl-form-cliente").innerText = (idiomaActual === "es") ? "Nombre del Cliente / Customer Name" : "Customer Name / Nombre del Cliente";
+            if (document.getElementById("lbl-form-tipo")) document.getElementById("lbl-form-tipo").innerText = (idiomaActual === "es") ? "Tipo de Unidad / RV Type" : "RV Type / Tipo de Unidad";
+            if (document.getElementById("lbl-form-marca")) document.getElementById("lbl-form-marca").innerText = (idiomaActual === "es") ? "Marca y Modelo / Make & Model" : "Make & Model / Marca y Modelo";
+            if (document.getElementById("lbl-form-anio")) document.getElementById("lbl-form-anio").innerText = (idiomaActual === "es") ? "Año de la Unidad / RV Model Year" : "RV Model Year / Año de la Unidad";
+
+            // Traduce el Badge de Categoría Superior buscando sus variables bilingües
+            const badge = document.getElementById("badge-texto");
+            if (badge && arbolDiagnostico["badge_" + idiomaActual]) badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+            
+            // Traduce dinámicamente el menú inferior de los 10 sistemas con letra grande
+            if (document.getElementById("sel-ac")) document.getElementById("sel-ac").innerHTML = (idiomaActual === "es") ? "⚡ Cambiar a Sistema 120V AC (Transfer Switch)" : "⚡ Switch to 120V AC System (Transfer Switch)";
+            if (document.getElementById("sel-dc")) document.getElementById("sel-dc").innerHTML = (idiomaActual === "es") ? "🔋 Cambiar a Sistema 12V DC (Centro WFCO)" : "🔋 Switch to 12V DC System (WFCO Converter)";
+            if (document.getElementById("sel-solar")) document.getElementById("sel-solar").innerHTML = (idiomaActual === "es") ? "☀️ Cambiar a Sistema Solar (Victron MPPT)" : "☀️ Switch to Solar System (Victron MPPT)";
+            if (document.getElementById("sel-plomeria")) document.getElementById("sel-plomeria").innerHTML = (idiomaActual === "es") ? "💧 Cambiar a Plomería y Calentadores (Atwood)" : "💧 Switch to Plumbing & Water Heaters (Atwood)";
+            if (document.getElementById("sel-chasis")) document.getElementById("sel-chasis").innerHTML = (idiomaActual === "es") ? "⚙️ Cambiar a Mecanismos y Chasis (Kwikee)" : "⚙️ Switch to Mechanisms & Chassis (Kwikee)";
+            if (document.getElementById("sel-refri")) document.getElementById("sel-refri").innerHTML = (idiomaActual === "es") ? "🔥 Cambiar a Refrigeración a Gas/120V (Dometic)" : "🔥 Switch to Gas/120V Refrigeration (Dometic)";
+            if (document.getElementById("sel-acondicionado")) document.getElementById("sel-acondicionado").innerHTML = (idiomaActual === "es") ? "❄️ Cambiar a Aire Acondicionado (Coleman)" : "❄️ Switch to Air Conditioning (Coleman)";
+            if (document.getElementById("sel-hidraulica")) document.getElementById("sel-hidraulica").innerHTML = (idiomaActual === "es") ? "⚙️ Cambiar a Niveladores e Hidráulica (LCI)" : "⚙️ Switch to Leveling & Hydraulics (LCI)";
+            if (document.getElementById("sel-slides")) document.getElementById("sel-slides").innerHTML = (idiomaActual === "es") ? "⚙️ Cambiar a Extensiones y Slide-Outs (Schwintek)" : "⚙️ Switch to Extensions & Slide-Outs (Schwintek)";
+            if (document.getElementById("sel-paneles")) document.getElementById("sel-paneles").innerHTML = (idiomaActual === "es") ? "📱 Cambiar a Paneles Digitales Multiplexados" : "📱 Switch to Multiplex Digital Panels";
+            
+            // Redibuja el nodo actual de la base de datos en el nuevo idioma seleccionado
+            const datosNodo = arbolDiagnostico[nodoActual];
+            if (!datosNodo) return;
+
+                        if (datosNodo.final) {
+                document.getElementById("texto-pregunta").innerHTML = datosNodo["solucion_" + idiomaActual];
+                inyectarBotonNuevoDiagnostico();
+            } else {
+                if (datosNodo.opciones_menu) {
+                    document.getElementById("texto-pregunta").innerText = datosNodo["pregunta_" + idiomaActual];
+                    refrescarBotonesMenuActual();
+                } else {
+                    document.getElementById("texto-pregunta").innerText = datosNodo["pregunta_" + idiomaActual];
+                    if (document.getElementById("btn-si")) document.getElementById("btn-si").innerText = (idiomaActual === "es") ? "👍 SÍ / YES" : "👍 YES / SÍ";
+                    if (document.getElementById("btn-no")) document.getElementById("btn-no").innerText = (idiomaActual === "es") ? "👎 NO / NO" : "👎 NO / NO";
+                }
+            }
+        }
+
+                // Limpia la pantalla de transiciones, regresa al nodo raíz y salta automáticamente hacia arriba
+        function reiniciar() {
+            nodoActual = "inicio";
+            const imgCont = document.getElementById("contenedor-imagen");
+            if (imgCont) {
+                imgCont.classList.add("hidden");
+                imgCont.style.display = "none";
+            }
+            
+            const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
+            if (divReporteBtn) divReporteBtn.classList.add("hidden");
+
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            
+            // Restablece los botones estándar de interacción grandes text-base puros
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg uppercase tracking-wider w-full">
+                    ${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}
+                </button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg uppercase tracking-wider w-full">
+                    ${idiomaActual === "es" ? "👎 NO" : "👎 NO"}
+                </button>
+            `;
+
+            // RESORTE DE USABILIDAD AUTOMÁTICO: Centra la vista del técnico en la pregunta alta al instante
+            const badgeCabecera = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (badgeCabecera) {
+                badgeCabecera.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }
+
+        // Cerebro bilingüe: Cambia el idioma global de la app y redibuja la pantalla de forma sincronizada
+        function cambiarIdioma() {
+            idiomaActual = (idiomaActual === "es") ? "en" : "es";
+            
+            // Actualiza el texto y la apariencia del botón en la cabecera
+            const btn = document.getElementById("btn-idioma");
+            if (btn) btn.innerHTML = (idiomaActual === "es") ? "🇺🇸 ENGLISH" : "🇲🇽 ESPAÑOL";
+            
+            // Traduce el subtítulo del encabezado oficial
+            const sub = document.getElementById("subtitulo-app");
+            if (sub) sub.innerText = (idiomaActual === "es") ? "Lógica Oficial ANSI/RVIA/NFPA 1192" : "Official ANSI/RVIA/NFPA 1192 Logic";
+            
+            // TRADUCCIÓN INTERACTIVA DE LAS ETIQUETAS DEL FORMULARIO DE ADMISIÓN DEL CLIENTE
+            if (document.getElementById("lbl-form-titulo")) document.getElementById("lbl-form-titulo").innerText = (idiomaActual === "es") ? "📝 Registro Inicial de Servicio / Tech Intake Log" : "📝 Initial Service Registry / Tech Intake Log";
+            if (document.getElementById("lbl-form-cliente")) document.getElementById("lbl-form-cliente").innerText = (idiomaActual === "es") ? "Nombre del Cliente / Customer Name" : "Customer Name / Nombre del Cliente";
+            if (document.getElementById("lbl-form-tipo")) document.getElementById("lbl-form-tipo").innerText = (idiomaActual === "es") ? "Tipo de Unidad / RV Type" : "RV Type / Tipo de Unidad";
+            if (document.getElementById("lbl-form-marca")) document.getElementById("lbl-form-marca").innerText = (idiomaActual === "es") ? "Marca y Modelo / Make & Model" : "Make & Model / Marca y Modelo";
+            if (document.getElementById("lbl-form-anio")) document.getElementById("lbl-form-anio").innerText = (idiomaActual === "es") ? "Año de la Unidad / RV Model Year" : "RV Model Year / Año de la Unidad";
+            // Traduce el Badge de Categoría Superior buscando sus variables bilingües
+            const badge = document.getElementById("badge-texto");
+            if (badge && arbolDiagnostico["badge_" + idiomaActual]) badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+            
+            // Traduce dinámicamente el menú inferior de los 10 sistemas con letra grande
+            if (document.getElementById("sel-ac")) document.getElementById("sel-ac").innerHTML = (idiomaActual === "es") ? "⚡ Cambiar a Sistema 120V AC (Transfer Switch)" : "⚡ Switch to 120V AC System (Transfer Switch)";
+            if (document.getElementById("sel-dc")) document.getElementById("sel-dc").innerHTML = (idiomaActual === "es") ? "🔋 Cambiar a Sistema 12V DC (Centro WFCO)" : "🔋 Switch to 12V DC System (WFCO Converter)";
+            if (document.getElementById("sel-solar")) document.getElementById("sel-solar").innerHTML = (idiomaActual === "es") ? "☀️ Cambiar a Sistema Solar (Victron MPPT)" : "☀️ Switch to Solar System (Victron MPPT)";
+            if (document.getElementById("sel-plomeria")) document.getElementById("sel-plomeria").innerHTML = (idiomaActual === "es") ? "💧 Cambiar a Plomería y Calentadores (Atwood)" : "💧 Switch to Plumbing & Water Heaters (Atwood)";
+            if (document.getElementById("sel-chasis")) document.getElementById("sel-chasis").innerHTML = (idiomaActual === "es") ? "⚙️ Cambiar a Mecanismos y Chasis (Kwikee)" : "⚙️ Switch to Mechanisms & Chassis (Kwikee)";
+            if (document.getElementById("sel-refri")) document.getElementById("sel-refri").innerHTML = (idiomaActual === "es") ? "🔥 Cambiar a Refrigeración a Gas/120V (Dometic)" : "🔥 Switch to Gas/120V Refrigeration (Dometic)";
+            if (document.getElementById("sel-acondicionado")) document.getElementById("sel-acondicionado").innerHTML = (idiomaActual === "es") ? "❄️ Cambiar a Aire Acondicionado (Coleman)" : "❄️ Switch to Air Conditioning (Coleman)";
+            if (document.getElementById("sel-hidraulica")) document.getElementById("sel-hidraulica").innerHTML = (idiomaActual === "es") ? "⚙️ Cambiar a Niveladores e Hidráulica (LCI)" : "⚙️ Switch to Leveling & Hydraulics (LCI)";
+            if (document.getElementById("sel-slides")) document.getElementById("sel-slides").innerHTML = (idiomaActual === "es") ? "⚙️ Cambiar a Extensiones y Slide-Outs (Schwintek)" : "⚙️ Switch to Extensions & Slide-Outs (Schwintek)";
+            if (document.getElementById("sel-paneles")) document.getElementById("sel-paneles").innerHTML = (idiomaActual === "es") ? "📱 Cambiar a Paneles Digitales Multiplexados" : "📱 Switch to Multiplex Digital Panels";
+            
+            // Redibuja el nodo actual de la base de datos en el nuevo idioma seleccionado
+            const datosNodo = arbolDiagnostico[nodoActual];
+            if (!datosNodo) return;
+
+            if (datosNodo.final) {
+                document.getElementById("texto-pregunta").innerHTML = datosNodo["solucion_" + idiomaActual];
+                const btnReiniciar = document.querySelector("#contenedor-botones button");
+                if (btnReiniciar) btnReiniciar.innerText = (idiomaActual === "es") ? "🔄 Nuevo Diagnóstico" : "🔄 New Diagnosis";
+            } else {
+                if (datosNodo.opciones_menu) {
+                    document.getElementById("texto-pregunta").innerText = datosNodo["pregunta_" + idiomaActual];
+                    refrescarBotonesMenuActual();
+                } else {
+                    document.getElementById("texto-pregunta").innerText = datosNodo["pregunta_" + idiomaActual];
+                    if (document.getElementById("btn-si")) document.getElementById("btn-si").innerText = (idiomaActual === "es") ? "👍 SÍ / YES" : "👍 YES / SÍ";
+                    if (document.getElementById("btn-no")) document.getElementById("btn-no").innerText = (idiomaActual === "es") ? "👎 NO / NO" : "👎 NO / NO";
+                }
+            }
+        }
+
+        // Limpia la pantalla de transiciones y regresa al nodo raíz del árbol activo
+        function reiniciar() {
+            nodoActual = "inicio";
+            const imgCont = document.getElementById("contenedor-imagen");
+            if (imgCont) {
+                imgCont.classList.add("hidden");
+                imgCont.style.display = "none";
+            }
+            
+            const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
+            if (divReporteBtn) divReporteBtn.classList.add("hidden");
+
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            
+            // Restablece los botones estándar de interacción grandes text-base
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-900/20 uppercase tracking-wider">
+                    👍 SÍ / YES
+                </button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-rose-900/20 uppercase tracking-wider">
+                    👎 NO / NO
+                </button>
+            `;
+        }
+           // Carga el sistema de 120V AC creando botones gigantes y salto automático forzado
+        function cargarDistribucionAC() {
+            arbolDiagnostico = moduloDistribucionAC;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-amber-600/20 text-amber-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-amber-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionMenu('si')" class="bg-amber-600 hover:bg-amber-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚡ Transfer Switch" : "⚡ Transfer Switch"}
+                </button>
+                <button onclick="procesarOpcionMenu('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "🔌 Inversor Principal" : "🔌 Main Inverter"}
+                </button>
+            `;
+            // RESORTE MAESTRO: Lleva la pantalla del técnico directo a las preguntas arriba
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar la rama del menú de 120V AC
+        function procesarOpcionMenu(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+
+        // Carga el sistema de 12V DC enlazando su badge bilingÜe y forzando el salto automÁTico
+        function cargarBateriasYDC() {
+            arbolDiagnostico = moduloBateriasYDC;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.className = "bg-cyan-600/20 text-cyan-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-cyan-500/30 uppercase";
+            }
+            reiniciar();
+            // RESORTE MAESTRO UX: Sube instantÁneamente la vista a las preguntas altas
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Carga el sistema de Energía Solar creando botones gigantes y salto automático forzado
+        function cargarInversoresSolar() {
+            arbolDiagnostico = moduloInversoresSolar;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-emerald-600/20 text-emerald-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-emerald-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionSolar('si')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "☀️ Voltaje Paneles" : "☀️ Panel Voltage"}
+                </button>
+                <button onclick="procesarOpcionSolar('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "🌡️ Temperatura/SW" : "🌡️ Temp/Software"}
+                </button>
+            `;
+            // RESORTE MAESTRO: Lleva la pantalla del técnico directo a las preguntas arriba
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar la rama del menú Solar con letra grande
+        function procesarOpcionSolar(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+        // Carga el sistema de PlomerÍA y Calentadores con botones grandes masivos y salto automÁTico forzado
+        function cargarPlomeriaFluidos() {
+            arbolDiagnostico = moduloPlomeriaFluidos;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-blue-600/20 text-blue-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-blue-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionCalentador('si')" class="bg-blue-600 hover:bg-blue-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    \${idiomaActual === "es" ? "🔥 Modo Gas LP" : "🔥 Propane Mode"}
+                </button>
+                <button onclick="procesarOpcionCalentador('no')" class="bg-amber-600 hover:bg-amber-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    \--\${idiomaActual === "es" ? "⚡ Elemento 120V" : "⚡ 120V Element"}
+                </button>
+            `;
+            // RESORTE MAESTRO UX: Sube instantÁneamente la vista a las preguntas altas
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar la rama del menú de Plomería con letra grande
+        function procesarOpcionCalentador(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+                // Carga el sistema de Mecanismos y Chasis con botones grandes masivos premium y salto automático
+        function cargarMecanismosChasis() {
+            arbolDiagnostico = moduloMecanismosChasis;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.className = "bg-indigo-600/20 text-indigo-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-indigo-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionMecanismos('si')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚡ Voltajes/Tierra" : "⚡ Voltages/Ground"}
+                </button>
+                <button onclick="procesarOpcionMecanismos('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚙️ Motor/Ignición" : "⚙️ Motor/Ignition"}
+                </button>
+            `;
+            // RESORTE MAESTRO: Lleva la pantalla del técnico directo a las preguntas arriba
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar la rama del menú de Mecanismos con letra grande
+        function procesarOpcionMecanismos(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+        // Carga el sistema de Refrigeración a Gas/120V con botones grandes masivos premium y salto automático
+        function cargarRefrigeracionGas() {
+            arbolDiagnostico = moduloRefrigeracionGas;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-orange-600/20 text-orange-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-orange-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionRefri('si')" class="bg-orange-600 hover:bg-orange-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "🔥 Modo Gas LP" : "🔥 Propane Mode"}
+                </button>
+                <button onclick="procesarOpcionRefri('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚡ Eléctrico / Físico" : "⚡ Electric / Physical"}
+                </button>
+            `;
+            // RESORTE MAESTRO: Lleva la pantalla del técnico directo a las preguntas arriba
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar el modo de falla del refrigerador
+        function procesarOpcionRefri(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            if (arbolDiagnostico[nodoActual].opciones_menu) {
+                document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuestaSegundoNivelRefri('si')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                        ${idiomaActual === "es" ? "⚡ Modo 120V AC" : "⚡ 120V AC Mode"}
+                    </button>
+                    <button onclick="procesarRespuestaSegundoNivelRefri('no')" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                        ${idiomaActual === "es" ? "🌡️ Fuga / Termistor" : "🌡️ Leak / Thermistor"}
+                    </button>
+                `;
+            } else {
+                document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                    <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+                `;
+            }
+        }
+
+        // Función puente para el segundo nivel del menú de refrigeración
+        function procesarRespuestaSegundoNivelRefri(opcion) {
+            const datosNodo = arbolDiagnostico["menu_segundo_nivel_refri"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+              // Carga el sistema de Aire Acondicionado con botones grandes y salto automático
+        function cargarAireAcondicionado() {
+            arbolDiagnostico = moduloAireAcondicionado;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-rose-600/20 text-rose-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-rose-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionAC('si')" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "🛑 No Enciende" : "🛑 No Power"}
+                </button>
+                <button onclick="procesarOpcionAC('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "🌬️ No Enfría" : "🌬️ No Cooling"}
+                </button>
+            `;
+            // RESORTE AUTOMÁTICO UX: Sube instantáneamente la vista a las preguntas
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar el modo de falla del aire acondicionado con letra grande
+        function procesarOpcionAC(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+        // Carga el sistema de Niveladores e Hidráulica Lippert con botones grandes masivos y salto automático
+        function cargarNiveladoresHidraulica() {
+            arbolDiagnostico = moduloNiveladoresHidraulica;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-yellow-600/20 text-yellow-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-yellow-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionLCI('si')" class="bg-yellow-600 hover:bg-yellow-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚡ Falla Eléctrica" : "⚡ Electrical Fault"}
+                </button>
+                <button onclick="procesarOpcionLCI('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚙️ Gatos / Sensores" : "⚙️ Jacks / Sensors"}
+                </button>
+            `;
+            // RESORTE AUTOMÁTICO UX: Sube instantáneamente la vista a las preguntas
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+                  // Función puente para seleccionar el modo de falla de nivelación con letra grande
+        function procesarOpcionLCI(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            if (arbolDiagnostico[nodoActual].opciones_menu) {
+                document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuestaSegundoNivelLCI('si')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                        ${idiomaActual === "es" ? "💧 Mangueras / Aceite" : "💧 Hoses / Oil"}
+                    </button>
+                    <button onclick="procesarRespuestaSegundoNivelLCI('no')" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                        ${idiomaActual === "es" ? "⚠️ Freno de Mano" : "⚠️ Parking Brake"}
+                    </button>
+                `;
+            } else {
+                document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                    <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+                `;
+            }
+        }
+
+        // Función puente para el segundo nivel del menú de nivelación con letra grande
+        function procesarRespuestaSegundoNivelLCI(opcion) {
+            const datosNodo = arbolDiagnostico["menu_segundo_nivel_lci"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+        // Carga el sistema de Extensiones y Slide-Outs con botones grandes masivos y salto automático
+        function cargarSlideOuts() {
+            arbolDiagnostico = moduloSlideOuts;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-emerald-600/20 text-emerald-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-emerald-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionSlides('si')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚡ Schwintek / In-Wall" : "⚡ Schwintek / In-Wall"}
+                </button>
+                <button onclick="procesarOpcionSlides('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚙️ Hidráulico / Cable" : "⚙️ Hydraulic / Cable"}
+                </button>
+            `;
+            // RESORTE AUTOMÁTICO UX: Sube instantáneamente la vista a las preguntas
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar el modo de falla de Slide-Outs (Segundo Nivel) con letra grande
+        function procesarOpcionSlides(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            if (arbolDiagnostico[nodoActual].opciones_menu) {
+                document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuestaSegundoNivelSlides('si')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                        ${idiomaActual === "es" ? "💧 Gatos Hidráulicos" : "💧 Hydraulic Rams"}
+                    </button>
+                    <button onclick="procesarRespuestaSegundoNivelSlides('no')" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                        ${idiomaActual === "es" ? "⚙️ Sistema de Cable" : "⚙️ Cable System"}
+                    </button>
+                `;
+            } else {
+                document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                    <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+                `;
+            }
+        }
+
+        // Función puente para el segundo nivel del menú de Slide-Outs con letra grande
+        function procesarRespuestaSegundoNivelSlides(opcion) {
+            const datosNodo = arbolDiagnostico["menu_segundo_nivel_slides"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+        // Carga el sistema de Paneles Digitales Multiplexados modificando la interfaz con botones grandes y salto automático
+        function cargarPanelesDigitales() {
+            arbolDiagnostico = moduloPanelesDigitales;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-blue-600/20 text-blue-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-blue-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionPaneles('si')" class="bg-blue-600 hover:bg-blue-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "🌐 Red de Datos RV-C" : "🌐 RV-C Data Network"}
+                </button>
+                <button onclick="procesarOpcionPaneles('no')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚙️ Relevadores/BCM" : "⚙️ Relays/BCM Board"}
+                </button>
+            `;
+            // RESORTE MAESTRO: Lleva la pantalla del técnico directo a las preguntas arriba
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        // Función puente para seleccionar el modo de falla de Paneles Digitales con letra grande
+        function procesarOpcionPaneles(opcion) {
+            const datosNodo = arbolDiagnostico["inicio"];
+            nodoActual = datosNodo[opcion];
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico[nodoActual]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👍 SÍ" : "👍 YES"}</button>
+                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "👎 NO" : "👎 NO"}</button>
+            `;
+        }
+
+        // Carga el sistema de Plomería y Calentadores con botones grandes masivos y salto automático
+        function cargarPlomeriaFluidos() {
+            arbolDiagnostico = moduloPlomeriaFluidos;
+            const badge = document.getElementById("badge-texto");
+            if (badge) {
+                badge.innerText = arbolDiagnostico["badge_" + idiomaActual];
+                badge.className = "bg-blue-600/20 text-blue-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-blue-500/30 uppercase";
+            }
+            nodoActual = "inicio";
+            document.getElementById("contenedor-imagen").style.display = "none";
+            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="procesarOpcionCalentador('si')" class="bg-blue-600 hover:bg-blue-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "🔥 Modo Gas LP" : "🔥 Propane Mode"}
+                </button>
+                <button onclick="procesarOpcionCalentador('no')" class="bg-amber-600 hover:bg-amber-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">
+                    ${idiomaActual === "es" ? "⚡ Elemento 120V" : "⚡ 120V Element"}
+                </button>
+            `;
+            // RESORTE MAESTRO: Lleva la pantalla del técnico directo a las preguntas arriba
+            const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+            if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+ 
+        // FUNCIÓN CENTRAL MÁSTER: Dibuja el botón de Nuevo Diagnóstico sin símbolos encimados
+        function inyectarBotonNuevoDiagnostico() {
+            const textoBoton = (idiomaActual === "es") ? "🔄 Nuevo Diagnóstico" : "🔄 New Diagnosis";
+            document.getElementById("contenedor-botones").innerHTML = `
+                <button onclick="reiniciar()" id="btn-si" class="col-span-2 bg-emerald-600 hover:bg-emerald-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider w-full">
+                    ${textoBoton}
+                </button>
+            `;
+        }
+
+
+        // Refresca la interfaz de menús de segundo nivel manteniendo la escala masiva
+        function refrescarBotonesMenuActual() {
+            if (nodoActual === "inicio_falla_inversor_remoto_viejo") {
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuestaSegundoNivelSolar('si')" class="bg-cyan-600 hover:bg-cyan-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "⚡ Modo Inversor" : "⚡ Inverter Mode"}</button>
+                    <button onclick="procesarRespuestaSegundoNivelSolar('no')" class="bg-rose-600 hover:bg-rose-500 text-white text-base font-black py-4 px-4 rounded-xl transition shadow-lg uppercase tracking-wider">${idiomaActual === "es" ? "🌡️ Temperatura / SW" : "🌡️ Temp / Software"}</button>
+                `;
+            }
+        }
+
+        // FUNCIÓN MAESTRA DE ALTA GAMA: Jala inputs de la unidad, calcula tiempos reales de EUA y fuerza las 2 Hojas en el PDF
+        function generarPDFReporte() {
+            // Captura segura de datos esenciales de la interfaz para clonar al reporte impreso
+            const solucionTexto = document.getElementById("texto-pregunta") ? document.getElementById("texto-pregunta").innerHTML : "";
+            const badgeTexto = document.getElementById("badge-texto") ? document.getElementById("badge-texto").innerText : "MASTER RV DIAG";
+            const contenedorImg = document.getElementById("contenedor-imagen");
+            
+            // Jala y estampa dinámicamente los datos del formulario de admisión en el reporte
+            const cliente = document.getElementById("input-cliente") ? document.getElementById("input-cliente").value : "N/A";
+            const tipoRV = document.getElementById("input-tipo") ? document.getElementById("input-tipo").value : "N/A";
+            const makeModel = document.getElementById("input-marca") ? document.getElementById("input-marca").value : "N/A";
+            const modelAnio = document.getElementById("input-anio") ? document.getElementById("input-anio").value : "N/A";
+
+            if (document.getElementById("pdf-val-cliente-h1")) document.getElementById("pdf-val-cliente-h1").innerText = cliente;
+            if (document.getElementById("pdf-val-tipo-h1")) document.getElementById("pdf-val-tipo-h1").innerText = tipoRV;
+            if (document.getElementById("pdf-val-specs-h1")) document.getElementById("pdf-val-specs-h1").innerText = `${modelAnio} - ${makeModel}`;
+
+            // Inyectar la fecha actual automatizada en el formato correspondiente al idioma activo
+            const fecha = new Date();
+            const fechaTexto = (idiomaActual === "es")
+                ? `Fecha de Emisión: ${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`
+                : `Date of Issue: ${fecha.getMonth() + 1}/${fecha.getDate()}/${fecha.getFullYear()}`;
+            if (document.getElementById("pdf-fecha-emision")) document.getElementById("pdf-fecha-emision").innerText = fechaTexto;
+
+            // Transferir el resultado del diagnóstico al bloque de la Hoja 1 del PDF
+            const elSolucion = document.getElementById("pdf-contenido-solucion");
+            if (elSolucion) {
+                elSolucion.innerHTML = `
+                    <p class="font-bold text-gray-700 mb-2 uppercase text-[10px]">${badgeTexto}</p>
+                    <div>${solucionTexto}</div>
+                `;
+            }
+
+            // Clonar el esquema técnico adosado si la pantalla cuenta con él
+            const pdfDiagrama = document.getElementById("pdf-diagrama-adjunto");
+            if (pdfDiagrama && contenedorImg && contenedorImg.style.display !== "none") {
+                pdfDiagrama.innerHTML = contenedorImg.innerHTML;
+                pdfDiagrama.classList.remove("hidden");
+            } else if (pdfDiagrama) {
+                pdfDiagrama.classList.add("hidden");
+                pdfDiagrama.innerHTML = "";
+            }
+
+            // =================================================================================
+            // MOTOR DE INTELIGENCIA COMERCIAL: Determina Flat-Rates y Costos MSRP por Sistema Activo
+            // =================================================================================
+            let hrsBase = "1.0 Hr"; let hrsObstructivo = "+1.5 Hrs"; let hrsTotales = "2.5 Hrs";
+            let rangoCostos = "$180.00 - $350.00 USD"; let notasDesarme = "";
+            if (badgeTexto.includes("120V AC") || badgeTexto.includes("TRANSFER")) {
+                hrsBase = "1.0 Hr"; hrsObstructivo = "+1.0 Hr"; hrsTotales = "2.0 Hrs"; rangoCostos = "$250.00 - $480.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Apertura de caja de transferencia, descarte galvánico y desmontaje de cables Romex gruesos." : "Requires opening metal transfer enclosure, galvanic discharge, and heavy-gauge Romex cable removal.";
+            } else if (badgeTexto.includes("SOLAR") || badgeTexto.includes("INVERSOR")) {
+                hrsBase = "1.5 Hrs"; hrsObstructivo = "+1.5 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$450.00 - $950.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Purga de capacitores Victron/Xantrex, aislamiento de strings de paneles y descalibración de shunts." : "Requires manual high-capacitance discharge on Victron/Xantrex units, solar panel string isolation, and smart shunt de-calibration.";
+            } else if (badgeTexto.includes("PLOMERÍA") || badgeTexto.includes("PLUMBING")) {
+                hrsBase = "1.0 Hr"; hrsObstructivo = "+2.0 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$320.00 - $650.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Drenado total del tanque Atwood/Suburban, remoción de líneas de Gas LP y raspado de sarro galvánico." : "Requires complete Atwood/Suburban tank drainage, removal of blocked LP gas lines, and scraping galvanic scale from tank wall.";
+            } else if (badgeTexto.includes("REFRIGERACIÓN") || badgeTexto.includes("REFRIGERATION")) {
+                hrsBase = "2.0 Hrs"; hrsObstructivo = "+2.0 Hrs"; hrsTotales = "4.0 Hrs"; rangoCostos = "$600.00 - $1,400.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Desmontaje del refrigerador Dometic del gabinete, sellado de chimenea y purga segura de gases químicos." : "Requires sliding complete Dometic unit out of cabinet, flue chimney sealing, and safe chemical gas purging.";
+            } else if (badgeTexto.includes("EXTENSIONES") || badgeTexto.includes("SLIDE")) {
+                hrsBase = "2.0 Hrs"; hrsObstructivo = "+2.5 Hrs"; hrsTotales = "4.5 Hrs"; rangoCostos = "$400.00 - $850.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Apuntalamiento structural del cuarto del slide, remoción de molduras Schwintek y balanceo de cables." : "Requires physical structural shoring of the slide room, removing internal Schwintek trim, and balancing Accu-Slide wires.";
+            } else if (badgeTexto.includes("NIVELADORES") || badgeTexto.includes("LEVELING")) {
+                hrsBase = "1.5 Hrs"; hrsObstructivo = "+1.5 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$450.00 - $900.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Purga de aire en líneas hidráulicas Lippert a 3000 PSI, vaciado de ATF Mercon y torque de gatos chasis." : "Requires full air purging on Lippert 3000 PSI hydraulic fluid lines, ATF evacuation, and frame bolt torque.";
+            } else {
+                hrsBase = "1.0 Hr"; hrsObstructivo = "+1.0 Hr"; hrsTotales = "2.0 Hrs"; rangoCostos = "$150.00 - $350.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Incluye remoción de cubiertas de acceso, descarte galvánico primario y torque en tornillería de chasis de fábrica." : "Includes removal of access panels, galvanic testing, and torque application on factory chassis bolts.";
+            }
+
+            // Inyectar valores numéricos calculados de forma ultra segura a la Hoja 2 del PDF
+            if (document.getElementById("pdf-lbl-base")) document.getElementById("pdf-lbl-base").innerText = (idiomaActual === "es") ? "Tiempo Base Intercambio:" : "Base Component Exchange Time:";
+            if (document.getElementById("pdf-val-base")) document.getElementById("pdf-val-base").innerText = hrsBase;
+            
+            if (document.getElementById("pdf-lbl-obstructivo")) document.getElementById("pdf-lbl-obstructivo").innerText = (idiomaActual === "es") ? "Trabas de Desarme Obstructivo:" : "Obstructive Tear-Down Add-On:";
+            if (document.getElementById("pdf-val-obstructivo")) document.getElementById("pdf-val-obstructivo").innerText = hrsObstructivo;
+            
+            if (document.getElementById("pdf-lbl-total-hrs")) document.getElementById("pdf-lbl-total-hrs").innerText = (idiomaActual === "es") ? "Tiempo Total a Facturar:" : "Total Billable Flat-Rate Time:";
+            if (document.getElementById("pdf-val-total-hrs")) document.getElementById("pdf-val-total-hrs").innerText = hrsTotales;
+            
+            if (document.getElementById("pdf-lbl-costos")) document.getElementById("pdf-lbl-costos").innerText = (idiomaActual === "es") ? "Análisis de Costos de Refacción (Mercado EUA):" : "US Parts Market Cost Analysis (MSRP):";
+            if (document.getElementById("pdf-lbl-refaccion")) document.getElementById("pdf-lbl-refaccion").innerText = (idiomaActual === "es") ? "Rango Estimado del Componente:" : "Estimated Component Price Range:";
+            if (document.getElementById("pdf-val-costo-promedio")) document.getElementById("pdf-val-costo-promedio").innerText = rangoCostos;
+            
+            if (document.getElementById("pdf-lbl-trabas")) document.getElementById("pdf-lbl-trabas").innerText = (idiomaActual === "es") ? "📋 INSTRUCCIONES DE DESARME Y TRABAS PARA EL SUPERVISOR:" : "📋 SUPERVISOR WORK ORDER & TEAR-DOWN LOGS:";
+            if (document.getElementById("pdf-val-trabas")) document.getElementById("pdf-val-trabas").innerText = notasDesarme;
+
+            // Traducir las etiquetas fijas de firmas y títulos según el idioma activo de forma segura En La Hoja 1
+            if (document.getElementById("pdf-lbl-taller")) document.getElementById("pdf-lbl-taller").innerText = (idiomaActual === "es") ? "Taller / Service Shop:" : "Service Center / Shop Name:";
+            if (document.getElementById("pdf-lbl-diagnostico")) document.getElementById("pdf-lbl-diagnostico").innerText = (idiomaActual === "es") ? "Resultado del Diagnóstico Certificado:" : "Certified Diagnostic Evaluation Result:";
+            if (document.getElementById("pdf-firma-tecnico")) document.getElementById("pdf-firma-tecnico").innerText = (idiomaActual === "es") ? "Firma del Técnico Certificado" : "Certified Technical Specialist Signature";
+            if (document.getElementById("pdf-firma-cliente")) document.getElementById("pdf-firma-cliente").innerText = (idiomaActual === "es") ? "Autorización Legal del Cliente" : "Customer Legal Authorization Slip";
+
+            // ACTIVACIÓN MÁSTER NATIVA: Enciende el bloque, manda la orden de impresión y lo vuelve a ocultar para la App
+            const blockPdf = document.getElementById("reporte-tecnico-impresion");
+            if (blockPdf) {
+                blockPdf.classList.remove("hidden");
+                window.print();
+                blockPdf.classList.add("hidden");
+            }
+        }
+    </script>
+</body>
+</html>
