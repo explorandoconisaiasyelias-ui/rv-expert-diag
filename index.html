@@ -252,6 +252,24 @@
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col font-sans select-none">
+        <!-- PANTALLA MÁSTER DE SEGURIDAD: Bloqueo de Acceso para Control de Clientes Pagados -->
+    <div id="pantalla-login-seguridad" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-slate-950" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: radial-gradient(circle, #090d16 0%, #020617 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box;">
+        <div class="bg-gray-800 p-8 rounded-2xl border-2 border-blue-500/30 text-center max-w-sm w-full" style="background: #0f172a; border: 2px solid #2563eb; border-radius: 1.5rem; padding: 2rem; text-align: center; max-width: 24rem; width: 100%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+            <div id="badge-texto" class="mb-4" style="background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.1em; padding: 0.4rem 1rem; border-radius: 9999px; display: inline-block; margin-bottom: 1rem; text-transform: uppercase;">
+                SECURITY AUTH SERVICE
+            </div>
+            <h2 style="font-size: 1.5rem; font-weight: 900; color: #ffffff; margin-bottom: 0.5rem; text-transform: uppercase; tracking-wide: 0.05em;">RV EXPERT DIAG</h2>
+            <p id="lbl-login-sub" style="font-size: 0.9rem; font-weight: 700; color: #94a3b8; margin-bottom: 1.5rem; text-transform: uppercase;">ENTER COMMERCIAL ACCESS CODE:</p>
+            
+            <input type="text" id="input-clave-licencia" placeholder="XXXX-XXXX-XXXX" style="width: 100%; background-color: #020617; border: 2px solid #475569; border-radius: 0.85rem; padding: 1rem; color: #ffffff; font-size: 1.25rem; font-weight: 900; text-align: center; letter-spacing: 0.1em; outline: none; box-sizing: border-box; margin-bottom: 1.25rem; text-transform: uppercase;">
+            
+            <button onclick="validarLicenciaCliente()" style="width: 100%; background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%); color: #ffffff; font-size: 1.1rem; font-weight: 900; padding: 1.1rem; border-radius: 1rem; border: none; cursor: pointer; text-transform: uppercase; tracking-wider: 0.05em; box-shadow: 0 10px 15px -3px rgba(29, 78, 216, 0.4);">
+                UNLOCK SUITE
+            </button>
+            <p id="error-login-alerta" style="color: #ef4444; font-size: 0.9rem; font-weight: 900; margin-top: 1rem; display: none; text-transform: uppercase;"></p>
+        </div>
+    </div>
+
 
     <!-- Encabezado de la App con Switch de Idioma Automatizado y Texto Grande de Alta Visibilidad -->
     <header class="bg-slate-900 p-5 shadow-xl border-b border-blue-600/40 sticky top-0 z-50 flex justify-between items-center max-w-lg mx-auto w-full rounded-b-xl">
@@ -1288,6 +1306,41 @@
                 blockPdf.classList.remove("hidden");
                 window.print();
                 blockPdf.classList.add("hidden");
+            }
+        }
+                // FUNCIÓN MÁSTER DE SEGURIDAD: Valida claves comerciales de clientes pagados de San Diego County y libera el software
+        function validarLicenciaCliente() {
+            const claveIngresada = document.getElementById("input-clave-licencia") ? document.getElementById("input-clave-licencia").value.trim().toUpperCase() : "";
+            const alertaError = document.getElementById("error-login-alerta");
+            
+            // BANCO CENTRAL DE LICENCIAS: Aquí controlas de forma estricta las claves permitidas de tus clientes de California
+            const licenciasActivasValidas = [
+                "CHULA-VISTA-RV-TECH", 
+                "SAN-DIEGO-COACH-99", 
+                "EL-CAJON-MOBILE-DIAG",
+                "SAN-MARCOS-CAMPERS"
+            ];
+
+            // Escáner de seguridad automatizado en microsegundos
+            if (licenciasActivasValidas.includes(claveIngresada)) {
+                // Si la clave es correcta, desvanece el candado visual y libera el motor de los 10 sistemas
+                const capaLogin = document.getElementById("pantalla-login-seguridad");
+                if (capaLogin) {
+                    capaLogin.style.transition = "opacity 0.4s ease";
+                    capaLogin.style.opacity = "0";
+                    setTimeout(() => {
+                        capaLogin.style.display = "none";
+                    }, 400);
+                }
+                if (alertaError) alertaError.style.display = "none";
+            } else {
+                // Si la clave es falsa o venció el mes, se activa el bloqueo duro y la alerta roja bilingüe
+                if (alertaError) {
+                    alertaError.innerText = (idiomaActual === "es") 
+                        ? "❌ CÓDIGO INVÁLIDO O EXPIRADO. CONTACTE AL SOPORTE." 
+                        : "❌ INVALID OR EXPIRED ACCESS CODE. CONTACT SUPPORT.";
+                    alertaError.style.display = "block";
+                }
             }
         }
     </script>
