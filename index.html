@@ -1249,7 +1249,8 @@
                 pdfDiagrama.innerHTML = "";
             }
 
-                       // =================================================================================
+                     
+            // =================================================================================
             // MOTOR DE INTELIGENCIA COMERCIAL: Determina Flat-Rates, Costos MSRP y Clausulado de Seguros
             // =================================================================================
             let hrsBase = "1.0 Hr"; let hrsObstructivo = "+1.5 Hrs"; let hrsTotales = "2.5 Hrs";
@@ -1269,7 +1270,6 @@
                 legalBasis = (idiomaActual === "es") ? "Violación de los estándares RVIA / ANSI LV-2026 para Sistemas de Energía de Corriente Directa de Bajo Voltaje." : "Violation of RVIA / ANSI LV-2026 Standards for Low Voltage Direct Current RV Power Systems configuration.";
                 severityFactor = (idiomaActual === "es") ? "ALTO: Degradación galvánica acelerada del banco de litio de la casa. Células expuestas a descarga profunda destructiva e irreversible." : "HIGH: Accelerated galvanic degradation of the house lithium bank. Cells exposed to destructive, irreversible deep discharge.";
             }
-
             } else if (badgeTexto.includes("PLOMERÍA") || badgeTexto.includes("PLUMBING")) {
                 hrsBase = "1.0 Hr"; hrsObstructivo = "+2.0 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$320.00 - $650.00 USD";
                 notasDesarme = (idiomaActual === "es") ? "Drenado total del tanque Atwood/Suburban, remoción de líneas de Gas LP y raspado de sarro galvánico." : "Requires complete Atwood/Suburban tank drainage, removal of blocked LP gas lines, and scraping galvanic scale from tank wall.";
@@ -1283,44 +1283,20 @@
                 legalBasis = (idiomaActual === "es") ? "Violación de los lineamientos de seguridad ANSI A119.2 para aparatos de refrigeración por gas en vehículos habitables." : "Violation of ANSI A119.2 safety guidelines for gas-fired refrigeration appliances in habitable vehicles.";
                 severityFactor = (idiomaActual === "es") ? "CRÍTICO: Escape potencial de gas amoníaco inflamable e inhalación tóxica severa para los ocupantes dentro del Motorhome." : "CRITICAL: Potential escape of flammable ammonia gas and severe toxic inhalation hazard for occupants inside the Motorhome.";
             }
-
-            } else if (badgeTexto.includes("EXTENSIONES") || badgeTexto.includes("SLIDE")) {
-                hrsBase = "2.0 Hrs"; hrsObstructivo = "+2.5 Hrs"; hrsTotales = "4.5 Hrs"; rangoCostos = "$400.00 - $850.00 USD";
-                notasDesarme = (idiomaActual === "es") ? "Apuntalamiento structural del cuarto del slide, remoción de molduras Schwintek y balanceo de cables." : "Requires physical structural shoring of the slide room, removing internal Schwintek trim, and balancing Accu-Slide wires.";
-                isolationTest = (idiomaActual === "es") ? "Prueba de amperaje en motores In-Wall. Descalibración de encoder magnético por torsión mecánica asimétrica en rieles H." : "Amperage draw test on In-Wall motors. Magnetic encoder de-synchronization caused by asymmetric mechanical torque on H-rails.";
-                legalBasis = (idiomaActual === "es") ? "Incumplimiento de las normas de integridad estructural y seguridad en componentes expandibles móviles RVIA." : "Non-compliance with RVIA structural integrity and safety standards for mobile expandable room components.";
-                severityFactor = (idiomaActual === "es") ? "ALTO: Deformación del marco estructural de la pared del RV. Daño permanente en sellos climáticos y filtración destructiva de agua." : "HIGH: Structural deformation of the RV wall opening frame. Permanent damage to weather seals causing destructive water leaks.";
-            } else if (badgeTexto.includes("NIVELADORES") || badgeTexto.includes("LEVELING")) {
-                hrsBase = "1.5 Hrs"; hrsObstructivo = "+1.5 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$450.00 - $900.00 USD";
-                notasDesarme = (idiomaActual === "es") ? "Purga de aire en líneas hidráulicas Lippert a 3000 PSI, vaciado de ATF Mercon y torque de gatos chasis." : "Requires full air purging on Lippert 3000 PSI hydraulic fluid lines, ATF evacuation, and frame bolt torque.";
-                isolationTest = (idiomaActual === "es") ? "Prueba de caída de presión en válvulas solenoide. Caída instantánea de PSI bajo torque estático demuestra falla en sellos internos." : "Pressure drop test on solenoid valves. Instantaneous PSI drop under static load proves failure of internal cylinder seals.";
-                legalBasis = (idiomaActual === "es") ? "Incumplimiento de los protocolos SAE para sistemas hidráulicos móviles sometidos a alta presión y cargas dinámicas." : "Non-compliance with SAE protocols for mobile hydraulic power systems subjected to high pressure and dynamic loads.";
-                severityFactor = (idiomaActual === "es") ? "ALTO: Colapso repentino del chasis en nivelación. Riesgo severo de torsión estructural del chasis del RV o aplastamiento." : "HIGH: Sudden coach chassis collapse during leveling. Severe risk of RV frame twisting or catastrophic physical crushing.";
-            } else {
-                hrsBase = "1.0 Hr"; hrsObstructivo = "+1.0 Hr"; hrsTotales = "2.0 Hrs"; rangoCostos = "$150.00 - $350.00 USD";
-                notasDesarme = (idiomaActual === "es") ? "Incluye remoción de cubiertas de acceso, descarte galvánico primario y torque en tornillería de chasis de fábrica." : "Includes removal of access panels, galvanic testing, and torque application on factory chassis bolts.";
-                isolationTest = (idiomaActual === "es") ? "Monitoreo de señales digitales y descarte de falsos contactos mediante multímetro Fluke certificado." : "Digital signal monitoring and loose connection elimination executed via certified Fluke multimeter testing.";
-                legalBasis = (idiomaActual === "es") ? "Cumplimiento general de los códigos de mantenimiento estandarizados RVIA de los Estados Unidos." : "General compliance with United States RVIA standardized maintenance and evaluation codes.";
-                severityFactor = (idiomaActual === "es") ? "MODERADO: Degradación menor de componentes auxiliares. Requiere atención preventiva inmediata para evitar paros de sistema." : "MODERADO: Minor auxiliary component degradation. Requires immediate preventive action to avoid systemic shut downs.";
+            } else if (badgeTexto.includes("PLOMERÍA") || badgeTexto.includes("PLUMBING")) {
+                hrsBase = "1.0 Hr"; hrsObstructivo = "+2.0 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$320.00 - $650.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Drenado total del tanque Atwood/Suburban, remoción de líneas de Gas LP y raspado de sarro galvánico." : "Requires complete Atwood/Suburban tank drainage, removal of blocked LP gas lines, and scraping galvanic scale from tank wall.";
+                isolationTest = (idiomaActual === "es") ? "Prueba de presión de gas hidrostática a 11 Columnas de Agua. Falla por fisura térmica invisible en la pared del tanque de aleación." : "Hydrostatic gas pressure test executed at 11 Inches of Water Column. Failure due to invisible thermal fissure on alloy tank wall.";
+                legalBasis = (idiomaActual === "es") ? "Incumplimiento de la norma NFPA 1192 para Sistemas de Plomería y Prevención de Explosiones en Vehículos Recreativos." : "Non-compliance with NFPA 1192 Standard for Recreational Vehicles Plumbing and Explosion Prevention protocols.";
+                severityFactor = (idiomaActual === "es") ? "CRÍTICO: Fuga de gas propano en compartimento sellado. Riesgo extremo de explosión estructural catastrófica en el campamento." : "CRITICAL: Propane gas accumulation within sealed compartment. Extreme risk of catastrophic structural explosion at campsite.";
+            } else if (badgeTexto.includes("REFRIGERACIÓN") || badgeTexto.includes("REFRIGERATION")) {
+                hrsBase = "2.0 Hrs"; hrsObstructivo = "+2.0 Hrs"; hrsTotales = "4.0 Hrs"; rangoCostos = "$600.00 - $1,400.00 USD";
+                notasDesarme = (idiomaActual === "es") ? "Desmontaje del refrigerador Dometic del gabinete, sellado de chimenea y purga segura de gases químicos." : "Requires sliding complete Dometic unit out of cabinet, flue chimney sealing, and safe chemical gas purging.";
+                isolationTest = (idiomaActual === "es") ? "Inspección de serpentín por absorción. Lectura óhmica de resistencia calefactora de 120V presenta corto circuito franco a chasis." : "Absorption cooling unit inspection. Ohmic reading of the 120V heating element shows a direct short circuit to chassis ground.";
+                legalBasis = (idiomaActual === "es") ? "Violación de los lineamientos de seguridad ANSI A119.2 para aparatos de refrigeración por gas en vehículos habitables." : "Violation of ANSI A119.2 safety guidelines for gas-fired refrigeration appliances in habitable vehicles.";
+                severityFactor = (idiomaActual === "es") ? "CRÍTICO: Escape potencial de gas amoníaco inflamable e inhalación tóxica severa para los ocupantes dentro del Motorhome." : "CRITICAL: Potential escape of flammable ammonia gas and severe toxic inhalation hazard for occupants inside the Motorhome.";
             }
-
-            if (document.getElementById("pdf-lbl-base")) document.getElementById("pdf-lbl-base").innerText = (idiomaActual === "es") ? "Tiempo Base Intercambio:" : "Base Component Exchange Time:";
-            if (document.getElementById("pdf-val-base")) document.getElementById("pdf-val-base").innerText = hrsBase;
-            
-            if (document.getElementById("pdf-lbl-obstructivo")) document.getElementById("pdf-lbl-obstructivo").innerText = (idiomaActual === "es") ? "Trabas de Desarme Obstructivo:" : "Obstructive Tear-Down Add-On:";
-            if (document.getElementById("pdf-val-obstructivo")) document.getElementById("pdf-val-obstructivo").innerText = hrsObstructivo;
-            
-            if (document.getElementById("pdf-lbl-total-hrs")) document.getElementById("pdf-lbl-total-hrs").innerText = (idiomaActual === "es") ? "Tiempo Total a Facturar:" : "Total Billable Flat-Rate Time:";
-            if (document.getElementById("pdf-val-total-hrs")) document.getElementById("pdf-val-total-hrs").innerText = hrsTotales;
-            
-            if (document.getElementById("pdf-lbl-costos")) document.getElementById("pdf-lbl-costos").innerText = (idiomaActual === "es") ? "Análisis de Costos de Refacción (Mercado EUA):" : "US Parts Market Cost Analysis (MSRP):";
-            if (document.getElementById("pdf-lbl-refaccion")) document.getElementById("pdf-lbl-refaccion").innerText = (idiomaActual === "es") ? "Rango Estimado del Componente:" : "Estimated Component Price Range:";
-            if (document.getElementById("pdf-val-costo-promedio")) document.getElementById("pdf-val-costo-promedio").innerText = rangoCostos;
-            
-            if (document.getElementById("pdf-lbl-trabas")) document.getElementById("pdf-lbl-trabas").innerText = (idiomaActual === "es") ? "📋 INSTRUCCIONES DE DESARME Y TRABAS PARA EL SUPERVISOR:" : "📋 SUPERVISOR WORK ORDER & TEAR-DOWN LOGS:";
-            if (document.getElementById("pdf-val-trabas")) document.getElementById("pdf-val-trabas").innerText = notasDesarme;
-
-              const divEvidencia = document.getElementById("pdf-val-trabas");
+            const divEvidencia = document.getElementById("pdf-val-trabas");
             if (divEvidencia) {
                 const viejaGarantia = document.getElementById("bloque-evidencia-garantia");
                 if (viejaGarantia) viejaGarantia.remove();
@@ -1353,14 +1329,11 @@
             }
         }
 
-
-            
-                // FUNCIÓN MÁSTER DE SEGURIDAD: Valida claves comerciales de clientes pagados de San Diego County y libera el software
+        // FUNCIÓN MÁSTER DE SEGURIDAD: Valida claves comerciales de clientes pagados de San Diego County y libera el software
         function validarLicenciaCliente() {
             const claveIngresada = document.getElementById("input-clave-licencia") ? document.getElementById("input-clave-licencia").value.trim().toUpperCase() : "";
             const alertaError = document.getElementById("error-login-alerta");
             
-            // BANCO CENTRAL DE LICENCIAS: Aquí controlas de forma estricta las claves permitidas de tus clientes de California
             const licenciasActivasValidas = [
                 "CHULA-VISTA-RV-TECH", 
                 "SAN-DIEGO-COACH-99", 
@@ -1368,9 +1341,7 @@
                 "SAN-MARCOS-CAMPERS"
             ];
 
-            // Escáner de seguridad automatizado en microsegundos
             if (licenciasActivasValidas.includes(claveIngresada)) {
-                // Si la clave es correcta, desvanece el candado visual y libera el motor de los 10 sistemas
                 const capaLogin = document.getElementById("pantalla-login-seguridad");
                 if (capaLogin) {
                     capaLogin.style.transition = "opacity 0.4s ease";
@@ -1381,7 +1352,6 @@
                 }
                 if (alertaError) alertaError.style.display = "none";
             } else {
-                // Si la clave es falsa o venció el mes, se activa el bloqueo duro y la alerta roja bilingüe
                 if (alertaError) {
                     alertaError.innerText = (idiomaActual === "es") 
                         ? "❌ CÓDIGO INVÁLIDO O EXPIRADO. CONTACTE AL SOPORTE." 
@@ -1393,3 +1363,4 @@
     </script>
 </body>
 </html>
+
