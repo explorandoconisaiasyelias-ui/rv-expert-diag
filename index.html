@@ -1270,7 +1270,7 @@
                 isolationTest = (idiomaActual === "es") ? "Descarte de voltaje inverso. Bloqueo de BMS por Sleep Mode capacitivo. Circuito integrado lógico inoperable por estática." : "Reverse voltage isolation test. BMS lockout due to capacitive Sleep Mode. Internal logic integrated circuit inoperable by static surge.";
                 legalBasis = (idiomaActual === "es") ? "Violación de los estándares RVIA / ANSI LV-2026 para Sistemas de Energía de Corriente Directa de Bajo Voltaje." : "Violation of RVIA / ANSI LV-2026 Standards for Low Voltage Direct Current RV Power Systems configuration.";
                 severityFactor = (idiomaActual === "es") ? "ALTO: Degradación galvánica acelerada del banco de litio de la casa. Células expuestas a descarga profunda destructiva e irreversible." : "HIGH: Accelerated galvanic degradation of the house lithium bank. Cells exposed to destructive, irreversible deep discharge.";
-            }
+            
             } else if (badgeTexto.includes("PLOMERÍA") || badgeTexto.includes("PLUMBING")) {
                 hrsBase = "1.0 Hr"; hrsObstructivo = "+2.0 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$320.00 - $650.00 USD";
                 notasDesarme = (idiomaActual === "es") ? "Drenado total del tanque Atwood/Suburban, remoción de líneas de Gas LP y raspado de sarro galvánico." : "Requires complete Atwood/Suburban tank drainage, removal of blocked LP gas lines, and scraping galvanic scale from tank wall.";
@@ -1284,7 +1284,7 @@
                 legalBasis = (idiomaActual === "es") ? "Violación de los lineamientos de seguridad ANSI A119.2 para aparatos de refrigeración por gas en vehículos habitables." : "Violation of ANSI A119.2 safety guidelines for gas-fired refrigeration appliances in habitable vehicles.";
                 severityFactor = (idiomaActual === "es") ? "CRÍTICO: Escape potencial de gas amoníaco inflamable e inhalación tóxica severa para los ocupantes dentro del Motorhome." : "CRITICAL: Potential escape of flammable ammonia gas and severe toxic inhalation hazard for occupants inside the Motorhome.";
             }
-            } else if (badgeTexto.includes("PLOMERÍA") || badgeTexto.includes("PLUMBING")) {
+             else if (badgeTexto.includes("PLOMERÍA") || badgeTexto.includes("PLUMBING")) {
                 hrsBase = "1.0 Hr"; hrsObstructivo = "+2.0 Hrs"; hrsTotales = "3.0 Hrs"; rangoCostos = "$320.00 - $650.00 USD";
                 notasDesarme = (idiomaActual === "es") ? "Drenado total del tanque Atwood/Suburban, remoción de líneas de Gas LP y raspado de sarro galvánico." : "Requires complete Atwood/Suburban tank drainage, removal of blocked LP gas lines, and scraping galvanic scale from tank wall.";
                 isolationTest = (idiomaActual === "es") ? "Prueba de presión de gas hidrostática a 11 Columnas de Agua. Falla por fisura térmica invisible en la pared del tanque de aleación." : "Hydrostatic gas pressure test executed at 11 Inches of Water Column. Failure due to invisible thermal fissure on alloy tank wall.";
@@ -1328,7 +1328,6 @@
                 window.print();
                 blockPdf.classList.add("hidden");
             }
-        }
 
         // FUNCIÓN MÁSTER DE SEGURIDAD: Valida claves comerciales de clientes pagados de San Diego County y libera el software
         function validarLicenciaCliente() {
@@ -1361,7 +1360,9 @@
                 }
             }
         }
+    }
     </script>
 </body>
 </html>
 
+        
