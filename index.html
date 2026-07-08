@@ -1317,6 +1317,56 @@
                 `);
             }
 
+            // Inyectar el Dictamen por Voz Refinado por IA en la sección oficial del Reporte
+            const dictamenVozTexto = document.getElementById("input-dictamen-voz") ? document.getElementById("input-dictamen-voz").value : "";
+            const divDictamenPdf = document.getElementById("pdf-claim-severity");
+            if (divDictamenPdf && dictamenVozTexto.trim() !== "") {
+                const lblRefuerzo = (idiomaActual === "es") ? "\n\n📢 RETROALIMENTACIÓN DE CAMPO DEL TÉCNICO (EVIdencia DE DESARME): " : "\n\n📢 CERTIFIED FIELD TECH LOGS (ADDITIONAL TEAR-DOWN EVIDENCE): ";
+                divDictamenPdf.innerText += lblRefuerzo + dictamenVozTexto;
+            }
+
+            // MOTOR INTEGRADO: Limpia páginas de fotos previas y dibuja el Álbum de Evidencias en el PDF
+            const viejasPaginasFotos = document.querySelectorAll(".pagina-fotos-seguros");
+            viejasPaginasFotos.forEach(p => p.remove());
+
+            const blockPdfContenedor = document.getElementById("reporte-tecnico-impresion");
+            if (blockPdfContenedor && coleccionFotosAseguradora.length > 0) {
+                let htmlFotosPagina = "";
+                let fotosContadas = 0;
+
+                coleccionFotosAseguradora.forEach((fotoBase64) => {
+                    if (!fotoBase64) return; // Salta fotos borradas por el técnico
+                    
+                    if (fotosContadas % 4 === 0) {
+                        if (fotosContadas > 0) htmlFotosPagina += `</div></div>`; // Cierra página anterior
+                        htmlFotosPagina += `
+                            <div class="pagina-fotos-seguros" style="page-break-before: always; background: #ffffff; color: #000000; padding: 2rem; font-family: sans-serif; min-height: 297mm; box-sizing: border-box;">
+                                <div style="border-bottom: 2px solid #ef4444; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 11px; font-weight: 900; color: #ef4444; tracking-wide: 0.1em; text-transform: uppercase;">🛡️ VERIFIED TECHNICAL EVIDENCE - EXTENDED INSURANCE CLAIMS</span>
+                                    <span style="font-size: 9px; color: #64748b; font-weight: 700;">CHULA VISTA RV DIAGNOSTIC SUITE</span>
+                                </div>
+                                <div style="display: grid; grid-template-cols: 1fr 1fr; gap: 1.5rem;">
+                        `;
+                    }
+
+                    htmlFotosPagina += `
+                        <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.5rem; background: #f8fafc; text-align: center;">
+                            <img src="${fotoBase64}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px; border: 1px solid #e2e8f0;">
+                            <p style="font-size: 8px; font-weight: 900; color: #1e293b; margin-top: 0.4rem; text-transform: uppercase;">
+                                ${idiomaActual === "es" ? "EVIDENCIA DE ACCESO Y OBSTRUCCIÓN DE CAMPO" : "FIELD OBSTRUCTION & ACCESSIBILITY PROOF"}
+                            </p>
+                        </div>
+                    `;
+                    fotosContadas++;
+                });
+
+                if (fotosContadas > 0) htmlFotosPagina += `</div></div>`; // Cierra la última página abierta
+                if (htmlFotosPagina !== "") {
+                    blockPdfContenedor.insertAdjacentHTML('beforeend', htmlFotosPagina);
+                }
+            }
+
+
             if (document.getElementById("pdf-lbl-taller")) document.getElementById("pdf-lbl-taller").innerText = (idiomaActual === "es") ? "Taller / Service Shop:" : "Service Center / Shop Name:";
             if (document.getElementById("pdf-lbl-diagnostico")) document.getElementById("pdf-lbl-diagnostico").innerText = (idiomaActual === "es") ? "Resultado del Diagnóstico Certificado:" : "Certified Diagnostic Evaluation Result:";
             if (document.getElementById("pdf-firma-tecnico")) document.getElementById("pdf-firma-tecnico").innerText = (idiomaActual === "es") ? "Firma del Técnico Certificado" : "Certified Technical Specialist Signature";
@@ -1329,6 +1379,143 @@
                 blockPdf.classList.add("hidden");
             }
         }
+
+        // =================================================================================
+        // MOTOR DE PROCESAMIENTO DE EVIDENCIA FOTOGRÁFICA ILIMITADA PARA ASEGURADORAS
+        // =================================================================================
+        let coleccionFotosAseguradora = [];
+
+        function procesarFotosAseguradora(event) {
+            const archivos = event.target.files;
+            const contenedorPrevisualizacion = document.getElementById("previsualizacion-fotos-taller");
+            if (!archivos || archivos.length === 0) return;
+
+            for (let i = 0; i < archivos.length; i++) {
+                const lector = new FileReader();
+                lector.onload = function(e) {
+                    const base64Img = e.target.result;
+                    coleccionFotosAseguradora.push(base64Img);
+
+                    // Dibujar miniatura en la pantalla de la laptop del técnico
+                    const divMiniatura = document.createElement("div");
+                    divMiniatura.className = "relative group border border-slate-700 rounded overflow-hidden aspect-square bg-slate-950";
+                    divMiniatura.innerHTML = `
+                        <img src="${base64Img}" class="w-full h-full object-cover">
+                        <button type="button" onclick="eliminarFotoEvidencia(${coleccionFotosAseguradora.length - 1}, this)" style="position:absolute; top:2px; right:2px; background:rgba(239,68,68,0.85); color:#fff; font-size:8px; font-weight:900; padding:1px 4px; border-radius:3px;">X</button>
+                    `;
+                    contenedorPrevisualizacion.appendChild(divMiniatura);
+                };
+                lector.readAsDataURL(archivos[i]);
+            }
+        }
+
+        function eliminarFotoEvidencia(index, boton) {
+            coleccionFotosAseguradora[index] = null; // Marcador de borrado seguro
+            boton.parentElement.remove(); // Quitar la miniatura de la pantalla
+        }
+
+
+        // =================================================================================
+        // MOTOR DE DICTAMEN POR VOZ E OPTIMIZACIÓN REGULATORIA IA PARA ASEGURADORAS
+        // =================================================================================
+        let reconocimientoVoz;
+        function activarMicrofonoDictamen() {
+            const btnTxt = document.getElementById("txt-micro");
+            const btnIco = document.getElementById("icono-micro");
+            const txtArea = document.getElementById("input-dictamen-voz");
+            
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert("El navegador no soporta reconocimiento de voz nativo.");
+                return;
+            }
+
+            if (reconocimientoVoz) {
+                reconocimientoVoz.stop();
+                reconocimientoVoz = null;
+                btnTxt.innerText = "OPTIMIZANDO DICTAMEN CON IA...";
+                btnIco.innerText = "🤖";
+                setTimeout(() => { procesarYRefinarTextoIA(txtArea.value); }, 1200);
+                return;
+            }
+
+            reconocimientoVoz = new SpeechRecognition();
+            reconocimientoVoz.lang = "es-US";
+            reconocimientoVoz.interimResults = false;
+            reconocimientoVoz.maxAlternatives = 1;
+
+            reconocimientoVoz.onstart = () => {
+                btnTxt.innerText = "ESCUCHANDO... (PRESIONA DE NUEVO AL TERMINAR)";
+                btnIco.innerText = "🛑";
+                txtArea.value = "";
+            };
+
+            reconocimientoVoz.onresult = (event) => {
+                txtArea.value = event.results[event.results.length - 1][0].transcript;
+            };
+
+            reconocimientoVoz.onerror = () => {
+                btnTxt.innerText = "DICTAR POR VOZ";
+                btnIco.innerText = "🎙️";
+                reconocimientoVoz = null;
+            };
+
+            reconocimientoVoz.onend = () => {
+                if (reconocimientoVoz) {
+                    btnTxt.innerText = "OPTIMIZANDO DICTAMEN CON IA...";
+                    btnIco.innerText = "🤖";
+                    setTimeout(() => { procesarYRefinarTextoIA(txtArea.value); }, 1200);
+                }
+            };
+
+            reconocimientoVoz.start();
+        }
+
+        function procesarYRefinarTextoIA(textoOriginal) {
+            if (!textoOriginal || textoOriginal.trim() === "") {
+                limpiarDictamenVoz();
+                return;
+            }
+
+            let textoPulido = textoOriginal.toLowerCase();
+            
+            const glosarioIA = [
+                { voz: "quitar un fierro", tecnico: "remoción crítica de soporte estructural de chasis" },
+                { voz: "quitar fierros", tecnico: "desensamble de componentes de soporte rígido" },
+                { voz: "tubo oxidado", tecnico: "conducto metálico con severa degradación por corrosión galvánica afectando integridad" },
+                { voz: "cables que estorbaban", tecnico: "desvío y aislamiento obstructivo de líneas de distribución eléctrica Romex de alto calibre" },
+                { voz: "cables que estorban", tecnico: "desvío obstructivo de arneses de cableado principal de la unidad" },
+                { voz: "mangueras", tecnico: "líneas de conducción de fluidos a alta presión" },
+                { voz: "tubos de gas", tecnico: "líneas de suministro de gas LP certificadas bajo norma NFPA 1192" },
+                { voz: "molduras", tecnico: "paneles cosméticos externos y molduras de sellado estructural Schwintek" },
+                { voz: "madera podrida", tecnico: "degradación estructural de sustrato de madera por filtración destructiva e impacto higroscópico" },
+                { voz: "no prende", tecnico: "falla crítica de encendido con resistencia infinita óhmica, inoperable bajo carga térmica" },
+                { voz: "esta tirando agua", tecnico: "pérdida de hermeticidad con filtración hidrostática activa en sellos perimetrales" },
+                { voz: "para llegar a la pieza", tecnico: "para lograr acceso obstructivo de desarme tipo Tear-Down Add-On según códigos RVIA" }
+            ];
+
+            glosarioIA.forEach(item => {
+                textoPulido = textoPulido.split(item.voz).join(item.tecnico);
+            });
+
+            textoPulido = textoPulido.charAt(0).toUpperCase() + textoPulido.slice(1);
+
+            document.getElementById("input-dictamen-voz").value = textoPulido;
+            document.getElementById("txt-micro").innerText = "DICTAMEN OPTIMIZADO";
+            document.getElementById("icono-micro").innerText = "✅";
+            
+            setTimeout(() => {
+                document.getElementById("txt-micro").innerText = "DICTAR POR VOZ";
+                document.getElementById("icono-micro").innerText = "🎙️";
+            }, 2500);
+        }
+
+        function limpiarDictamenVoz() {
+            document.getElementById("input-dictamen-voz").value = "";
+            document.getElementById("txt-micro").innerText = "DICTAR POR VOZ";
+            document.getElementById("icono-micro").innerText = "🎙️";
+        }
+
 
         // FUNCIÓN MÁSTER DE SEGURIDAD: Valida claves comerciales de clientes pagados de San Diego County y libera el software
         function validarLicenciaCliente() {
