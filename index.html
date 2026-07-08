@@ -364,15 +364,10 @@
                 <div id="contenedor-imagen" class="w-full hidden overflow-hidden rounded-xl border border-gray-700/40 shadow-inner mb-4 transition-all duration-300"></div>
 
                 <div id="contenedor-reporte-pdf" class="hidden my-4">
-                    <button onclick="generarPDFReporte()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 px-4 rounded-xl transition shadow-lg text-xs uppercase tracking-widest active:scale-95 flex items-center justify-center gap-2">
-                        📋 <span id="txt-btn-reporte">Generar Reporte Impresora / PDF</span>
-                    <script>
-    // DISPARADOR DE FLUJO COMERCIAL: Despierta el recuadro rojo de evidencias e IA al activarse la impresión
-             if (document.getElementById("contenedor-seguros-claims-flujo")) {
-             document.getElementById("contenedor-seguros-claims-flujo").style.display = "block";
-            }
-    </script>
+                    <button onclick="generarPDFReporte(); activarPanelSegurosAlFinalizar()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 px-4 rounded-xl transition shadow-lg text-xs uppercase tracking-widest active:scale-95 flex items-center justify-center gap-2">
 
+                        📋 <span id="txt-btn-reporte">Generar Reporte Impresora / PDF</span>
+                   
                     </button>
                 </div>
 
@@ -1421,6 +1416,14 @@
                 blockPdf.classList.add("hidden");
             }
         }
+        // DISPARADOR DE FLUJO COMERCIAL: Monitorea el fin del cuestionario técnico y despierta el Panel de Seguros
+        function activarPanelSegurosAlFinalizar() {
+            const panelClaims = document.getElementById("contenedor-seguros-claims-flujo");
+            if (panelClaims) {
+                panelClaims.style.display = "block";
+            }
+        }
+
 
               // =================================================================================
         // MOTOR DE PROCESAMIENTO DE EVIDENCIA FOTOGRÁFICA ILIMITADA PARA ASEGURADORAS
