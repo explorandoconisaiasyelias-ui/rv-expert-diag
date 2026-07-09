@@ -1644,22 +1644,36 @@
             }
         }
 
-        // DETONADOR MÁSTER MÓDULO 11: Enlaza el cuestionario masivo de Onan/Cummins con las variables nativas
+        // DETONADOR MÁSTER MÓDULO 11: Enlaza tus 210 líneas de Onan/Cummins actualizando el badge superior
         function cargarPreguntasGeneradores() {
             if (typeof moduloGeneradores !== 'undefined') {
+                // 1. Candado de Identidad: Fuerza a la suite a reconocer la base de datos de Generadores
                 arbolDiagnostico = moduloGeneradores;
+                nodoActual = "inicio"; // Apunta al nodo de selección inicial de marcas
+                
+                // 2. Sincronización del Título: Fuerza al badge superior a cambiar su texto de forma mágica
                 const badge = document.getElementById("badge-texto");
                 if (badge) {
+                    badge.innerText = (idiomaActual === "es") ? moduloGeneradores.badge_es : moduloGeneradores.badge_en;
                     badge.className = "bg-amber-600/20 text-amber-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-amber-500/30 uppercase";
                 }
+                
+                // 3. Ejecuta el motor nativo de Chula Vista para limpiar la pantalla y dibujar el menú
                 reiniciar();
-                // RESORTE MAESTRO UX: Sube instantáneamente la vista a las preguntas altas
+                
+                // 4. RESORTE MAESTRO UX: Sube instantáneamente la vista a las preguntas altas
                 const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
-                if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+                if (targetPregunta) {
+                    targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                console.log("Módulo 11 de Generadores encendido en modo Grafo con Sincronización de Badge.");
             } else {
-                console.error("Error de laboratorio: moduloGeneradores no está cargado en memoria.");
+                console.error("Error de laboratorio: El objeto moduloGeneradores de tus 210 líneas no está en memoria.");
             }
         }
+        
         
 
 
