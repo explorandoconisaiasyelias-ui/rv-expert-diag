@@ -1,57 +1,52 @@
 // =================================================================================
-// MÓDULO 11: ENCICLOPEDIA FORENSE MÁSTER DE DIAGNÓSTICO INTEGRAL DE GENERADORES RV
-// EN ESTRICTO CUMPLIMIENTO CON LOS MANUALES DE SERVICIO CUMMINS ONAN Y GENERAC RV
+// MÓDULO 11: ENCICLOPEDIA FORENSE DE DIAGNÓSTICO INTEGRAL DE GENERADORES RV
+// ESTRUCTURA DE ARBOL INDEXADO CON MENÚ DE ADMISIÓN POR MODELO Y MARCA DE FÁBRICA
 // BAJO LAS NORMATIVAS FEDERALES AMERICANAS: RVIA/ANSI EGS-1, NEC ART. 551 Y NFPA 1192
 // =================================================================================
 
 const moduloGeneradores = {
-    // Propiedades obligatorias de identidad para actualizar el Badge de tu suite
-    nombre_es: "GENERADORES DE ENERGÍA (ONAN / CUMMINS / GENERAC)",
-    nombre_en: "GENERATORS AND POWER PLANTS (ONAN / CUMMINS)",
+    // Sincronización absoluta con el Badge superior dinámico de tu suite original
+    nombre_es: "GENERADORES Y PLANTAS DE LUZ (ONAN / CUMMINS / GENERAC)",
+    nombre_en: "FIELD GENERATORS & AUXILIARY POWER SUITE (ONAN / CUMMINS)",
+    badge_es: "GENERADORES Y PLANTAS DE LUZ (ONAN / CUMMINS / GENERAC)",
+    badge_en: "FIELD GENERATORS & AUXILIARY POWER SUITE (ONAN / CUMMINS)",
     
-    // NODO 1: LÍNEA CUMMINS ONAN QG (GASOLINE / GAS LP COBERTURA TOTAL)
+    // PANTALLA INICIAL DE ADMISIÓN EXIGIDA POR TU REGLA DE INGENIERÍA DE CAMPO
     inicio: {
-        pregunta_es: "CUMMINS ONAN QG SERIES (2800/4000/5500/7000): ¿El generador presenta falla crítica de arranque?\n" +
-            "SÍNTOMAS DE CAMPO:\n" +
-            "- El motor da marcha con fuerza pero NO retiene el encendido al soltar el interruptor.\n" +
-            "- Presenta petardeos violentos (Backfiring) por el escape o ahogamiento por combustible crudo.\n" +
-            "- El switch de cabina destella indicando 'Fault Code 36' (Engine Stopped Without Command),\n" +
-            "  'Fault Code 14' (Overfrequency) o 'Fault Code 13' (Undervoltage / Pérdida de Excitación).",
-            
-        pregunta_en: "CUMMINS ONAN QG SERIES (2800/4000/5500/7000): Does the generator present a critical starting failure?\n" +
-            "FIELD SYMPTOMS:\n" +
-            "- Engine cranks with high starter torque but stalls immediately upon releasing the switch.\n" +
-            "- Exhibits violent backfiring through exhaust or raw fuel flooding behavior.\n" +
-            "- Remote switch flashes 'Fault Code 36' (Engine Stopped Without Command),\n" +
-            "  'Fault Code 14' (Overfrequency), or 'Fault Code 13' (Undervoltage / Loss of Field Excitation).",
-            
-        sistema_es: "SISTEMA DE GAS/LP COMBUSTIÓN Y AC REGULATION (ONAN QG)",
-        sistema_en: "GAS/LP COMBUSTION & AC REGULATION MODULE (ONAN QG)",
+        pregunta_es: "MENÚ DE SELECCIÓN DE PLANTA: Seleccione la marca, tipo de combustible y línea de modelo del generador instalado en la unidad para activar el árbol forense específico:",
+        pregunta_en: "POWER PLANT SELECTION MENU: Select the brand, fuel type, and model line of the generator installed in the RV unit to engage the specific forensic branch:",
+        opciones_menu: true, // Avisa al index.html que dibuje los botones de marcas abajo
         
-        norma_es: "Incumplimiento severo de la norma de seguridad federal ANSI / RVIA EGS-1 para plantas auxiliares\n" +
-            "y violación de las directrices de suministro de fluidos y tuberías de gas LP exigidas por la NFPA 1192.",
-        norma_en: "Severe non-compliance with federal ANSI / RVIA EGS-1 auxiliary power regulations and\n" +
-            "violation of liquid/gaseous fuel system routing and safety mandates governed by NFPA 1192.",
-            
-        aislamiento_es: "ANÁLISIS PERICIAL DE LABORATORIO:\n" +
-            "1. Prueba hidrostática con manómetro digital en la línea de alimentación revela presión crítica\n" +
-            "   por debajo de 2 PSI (Especificación: 4.5 PSI) por obstrucción extrema de barniz en espreas.\n" +
-            "2. En variantes de Gas LP, el solenoide de corte presenta congelamiento estructural interno.\n" +
-            "3. Monitoreo óhmico con multímetro Fluke certificado en los anillos colectores del rotor (Slip Rings)\n" +
-            "   registra resistencia infinita (Circuito Abierto), confirmando devanados fundidos o escobillas de carbón falladas.\n" +
-            "4. Medición de frecuencia muestra fluctuaciones asimétricas fuera del rango operativo estable de 60Hz bajo carga.",
-            
-        aislamiento_en: "FORENSIC ENGINEERING DIAGNOSTICS:\n" +
-            "1. Hydrostatic digital pressure tracking on the fuel feed line reveals critical drop below 2 PSI\n" +
-            "   (Factory Spec: 4.5 PSI) induced by high-severity fuel varnish accumulation inside carburetor jets.\n" +
-            "2. On LP gas models, the fuel lock-off solenoid exhibits internal contamination and structural freezing.\n" +
-            "3. Certified Fluke multi-metering across rotor slip rings registers infinite resistance parameters,\n" +
-            "   confirming a destructive open circuit winding pathology or carbon brush brush sub-assembly structural collapse.\n" +
-            "4. AC frequency monitoring yields asymmetric drifting outside the stable 60Hz envelope under thermal load.",
-            
-        si: "onan_qd_diesel", // Enlace de flujo infinito al siguiente nodo masivo
+        // Enrutamiento milimétrico según el modelo que elija el mecánico en el taller
+        opciones: [
+            { texto_es: "1. Cummins Onan QG (Quiet Gas / LP - 2800 / 4000 / 5500 / 7000)", salto: "onan_qg_gas_lp" },
+            { texto_es: "2. Cummins Onan QD (Quiet Diesel - 6000 / 7500 / 8000 / 10000 / 12500)", salto: "onan_qd_diesel" },
+            { texto_es: "3. Generac RV Series (Primepact / Quietpact - 40G / 55G / 50D / 75D)", salto: "generac_prim_quiet" },
+            { texto_es: "4. Plantas Inverter Digitales de Estado Sólido (Honda EU / Champion)", salto: "honda_inverter_master" }
+        ],
+        si: "onan_qg_gas_lp",
         no: "onan_qd_diesel"
     },
+
+    // RAMIFICACIÓN ENTRADA 1: CUMMINS ONAN QG (GASOLINA / GAS LP)
+    onan_qg_gas_lp: {
+        pregunta_es: "SISTEMA CUMMINS ONAN QG (2800/4000/5500/7000 GASOLINA/LP):\n" +
+            "¿El motor da marcha con fuerza pero NO enciende, petardea por el escape tras un arranque corto (Fault Code 36 - Stopped Without Command)\n" +
+            "o revoluciona bruscamente y se apaga de golpe a los 3 segundos (Fault Code 14 - Overfrequency / AVR / De-calibration)?",
+        pregunta_en: "CUMMINS ONAN QG SERIES (2800/4000/5500/7000 GASOLINE/LP):\n" +
+            "Does the engine crank normally but fail to catch, backfire through exhaust (Fault Code 36),\n" +
+            "or rev up wildly and stall out immediately after 3 seconds (Fault Code 14 - Overfrequency / AVR)?",
+        sistema_es: "SISTEMAS DE COMBUSTIBLE Y AC FREQUENCY (ONAN QG)",
+        sistema_en: "FUEL SYSTEMS & AC FREQUENCY MODULE (ONAN QG)",
+        norma_es: "Incumplimiento de la norma de seguridad federal RVIA / ANSI EGS-1 y las directrices de suministro de fluidos y gas LP de la norma NFPA 1192.",
+        norma_en: "Non-compliance with federal RVIA / ANSI EGS-1 standards and liquid/gaseous fuel system piping mandates governed by NFPA 1192 regulations.",
+        aislamiento_es: "Descarte técnico: Comprobación hidrostática en la línea revela presión por debajo de 2 PSI por obstrucción de sedimentos o espreas tapadas en el carburador. En modelos de Gas LP, el solenoide se congela y restringe el flujo. La lectura óhmica en los anillos colectores del rotor (Slip Rings) muestra resistencia infinita, confirmando devanado abierto o escobillas de carbón totalmente desgastadas.",
+        aislamiento_en: "Technical evaluation: Hydrostatic pressure verification on the fuel line reveals critical drops below 2 PSI due to carburetor jet varnish clogging. On LP gas models, the lock-off solenoid undergoes internal structural freezing. Ohmic testing across rotor slip rings shows infinite resistance, confirming open field windings or carbon brushes completely failed.",
+        si: "onan_qd_diesel", // Engancha de forma matemática con tu bloque nativo de Quiet Diesel de abajo
+        no: "onan_qd_diesel"
+    },
+
+
     // NODO 2: LÍNEA PESADA CUMMINS ONAN QD (QUIET DIESEL COBERTURA TOTAL DE CLASE A)
     onan_qd_diesel: {
         pregunta_es: "CUMMINS ONAN QD SERIES (6000/7500/8000/10000/12500 DIESEL):\n" +
