@@ -52,20 +52,40 @@ const preguntasGeneradores = [
 ];
 
 function cargarPreguntasGeneradores() {
-    // Esta función conecta directamente este banco masivo con el cerebro master de tu index.html
-    if (typeof ramificacion !== 'undefined') {
+    console.log("Iniciando Módulo Máster de Generadores en la interfaz.");
+    
+    // 1. Enlazar la base de datos de Onan/Cummins/Generac con el flujo central de la suite
+    if (typeof preguntasGeneradores !== 'undefined') {
         ramificacion = preguntasGeneradores;
         preguntaActual = 0;
-        if (typeof mostrarPregunta === 'function') {
-            mostrarPregunta();
-        } else if (typeof renderizarPreguntaActual === 'function') {
-            renderizarPreguntaActual();
+        
+        // 2. Sincronizar el idioma actual y dibujar de golpe el Paso 1 en tu pantalla azul
+        const txtPregunta = document.getElementById("texto-pregunta");
+        if (txtPregunta) {
+            txtPregunta.innerText = (idiomaActual === "es") ? ramificacion[0].texto_es : ramificacion[0].texto_en;
+        }
+
+        // 3. Forzar el refresco de las etiquetas visuales (Badges) de la parte superior del diagnóstico
+        const badgeSistema = document.getElementById("badge-sistema") || document.getElementById("sistema-actual");
+        if (badgeSistema) {
+            badgeSistema.innerText = (idiomaActual === "es") ? ramificacion[0].sistema_es : ramificacion[0].sistema_en;
+        }
+
+        // 4. Limpiar el menú anterior del taller y redibujar los botones de SÍ y NO en su estado original
+        if (typeof mostrarOpciones === 'function') {
+            mostrarOpciones();
+        } else if (typeof renderizarOpciones === 'function') {
+            renderizarOpciones();
+        } else if (typeof inicializarOpciones === 'function') {
+            inicializarOpciones();
         }
         
-        // Hacer visible el contenedor de preguntas de la suite
-        const contenedorPreguntas = document.getElementById("contenedor-preguntas") || document.getElementById("quiz-container");
-        if (contenedorPreguntas) contenedorPreguntas.style.display = "block";
+        // 5. Ocultar el menú de sistemas inferior para dejarle la pantalla limpia al mecánico
+        const menuSistemas = document.getElementById("contenedor-sistemas") || document.getElementById("menu-sistemas");
+        if (menuSistemas) menuSistemas.style.display = "none";
+
+        console.log("Cuestionario de Generadores desplegado con éxito en el monitor.");
     } else {
-        console.error("El motor central de ramificaciones no está inicializado en la suite principal.");
+        console.error("Error crítico: La base de datos de 11_generadores.js no está respondiendo en la memoria.");
     }
 }
