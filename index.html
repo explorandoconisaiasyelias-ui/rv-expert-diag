@@ -1354,19 +1354,82 @@
                 `);
             }
 
-            // Inyectar el Dictamen por Voz Refinado por IA en la sección oficial del Reporte
-            const dictamenVozTexto = document.getElementById("input-dictamen-voz") ? document.getElementById("input-dictamen-voz").value : "";
+               // =================================================================================
+            // CEREBRO DE ENRUTAMIENTO: Ejecuta los 3 Modos Inteligentes de Blindaje Comercial
+            // =================================================================================
+            const dictamenVozTexto = document.getElementById("input-dictamen-voz") ? document.getElementById("input-dictamen-voz").value.trim() : "";
             const divDictamenPdf = document.getElementById("pdf-claim-severity");
+            const divRegulatoryPdf = document.getElementById("pdf-claim-regulatory");
+            const divIsolationPdf = document.getElementById("pdf-claim-isolation");
+
+            if (divDictamenPdf) {
+                if (dictamenVozTexto === "") {
+                    // MODO 1: 100% AUTOMATIZADO - Jala estrictamente las bases regulatorias nativas de la APP
+                    // El texto se mantiene intacto con el dictamen de ingeniería pre-calculado por sistema
+                } else {
+                    // MODO 2 (HÍBRIDO REFORZADO) o MODO 3 (PRIORIDAD DE VOZ): Inyecta el dictamen de campo pulido por IA
+                    const tituloRefuerzo = (idiomaActual === "es") 
+                        ? "\n\n📢 DICTAMEN DE CAMPO EXCLUSIVO DEL TÉCNICO (EVIDENCIA DE DESARME OBSTRUCTIVO - TEAR-DOWN LOGS):\n" 
+                        : "\n\n📢 CERTIFIED FIELD TECH DIRECT DISCLOSURE (EXTENDED TEAR-DOWN LABOR EVIDENCE):\n";
+                    
+                    divDictamenPdf.innerText += tituloRefuerzo + dictamenVozTexto;
+                }
+            }
+
+                        // MOTOR FOTOGRÁFICO: Limpia copias de inspecciones anteriores y monta el Álbum en el PDF
+            const viejasPaginasFotos = document.querySelectorAll(".pagina-fotos-seguros");
+            viejasPaginasFotos.forEach(p => p.remove());
+
+            const blockPdfContenedor = document.getElementById("reporte-tecnico-impresion");
+            if (blockPdfContenedor && coleccionFotosAseguradora.length > 0) {
+                let htmlFotosPagina = "";
+                let fotosContadas = 0;
+
+                coleccionFotosAseguradora.forEach((fotoBase64) => {
+                    if (!fotoBase64) return;
+                    
+                    if (fotosContadas % 4 === 0) {
+                        if (fotosContadas > 0) htmlFotosPagina += `</div></div>`;
+                        htmlFotosPagina += `
+                            <div class="pagina-fotos-seguros" style="page-break-before: always; background: #ffffff; color: #000000; padding: 2rem; font-family: sans-serif; min-height: 297mm; box-sizing: border-box;">
+                                <div style="border-bottom: 2px solid #ef4444; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 11px; font-weight: 900; color: #ef4444; text-transform: uppercase;">🛡️ VERIFIED TECHNICAL EVIDENCE - EXTENDED INSURANCE CLAIMS</span>
+                                    <span style="font-size: 9px; color: #64748b; font-weight: 700;">CHULA VISTA RV DIAGNOSTIC SUITE</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        `;
+                    }
+
+                    htmlFotosPagina += `
+                        <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.5rem; background: #f8fafc; text-align: center;">
+                            <img src="${fotoBase64}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px; border: 1px solid #e2e8f0;">
+                            <p style="font-size: 8px; font-weight: 900; color: #1e293b; margin-top: 0.4rem; text-transform: uppercase;">
+                                ${idiomaActual === "es" ? "EVIDENCIA DE ACCESO Y OBSTRUCCIÓN DE CAMPO" : "FIELD OBSTRUCTION & ACCESSIBILITY PROOF"}
+                            </p>
+                        </div>
+                    `;
+                    fotosContadas++;
+                });
+
+                if (fotosContadas > 0) htmlFotosPagina += `</div></div>`;
+                if (htmlFotosPagina !== "") {
+                    blockPdfContenedor.insertAdjacentHTML('beforeend', htmlFotosPagina);
+                }
+            }
+
+
+            // AUTO-RESETEO: Esconde el recuadro rojo inmediatamente al abrirse la impresora para limpiar el flujo
+            if (document.getElementById("contenedor-seguros-claims-flujo")) {
+                document.getElementById("contenedor-seguros-claims-flujo").style.display = "none";
+            }
+        
+
             if (divDictamenPdf && dictamenVozTexto.trim() !== "") {
                 const lblRefuerzo = (idiomaActual === "es") ? "\n\n📢 RETROALIMENTACIÓN DE CAMPO DEL TÉCNICO (EVIdencia DE DESARME): " : "\n\n📢 CERTIFIED FIELD TECH LOGS (ADDITIONAL TEAR-DOWN EVIDENCE): ";
                 divDictamenPdf.innerText += lblRefuerzo + dictamenVozTexto;
             }
 
             // MOTOR INTEGRADO: Limpia páginas de fotos previas y dibuja el Álbum de Evidencias en el PDF
-            const viejasPaginasFotos = document.querySelectorAll(".pagina-fotos-seguros");
-            viejasPaginasFotos.forEach(p => p.remove());
-
-            const blockPdfContenedor = document.getElementById("reporte-tecnico-impresion");
             if (blockPdfContenedor && coleccionFotosAseguradora.length > 0) {
                 let htmlFotosPagina = "";
                 let fotosContadas = 0;
