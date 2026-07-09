@@ -1644,6 +1644,32 @@
             }
         }
 
+        // DETONADOR MÁSTER MÓDULO 11: Enlaza el cuestionario masivo de Onan/Cummins con la pantalla azul
+        function cargarPreguntasGeneradores() {
+            if (typeof preguntasGeneradores !== 'undefined') {
+                ramificacion = preguntasGeneradores;
+                preguntaActual = 0;
+                
+                // Ejecuta el motor nativo de tu suite para dibujar la primera pregunta en pantalla
+                if (typeof mostrarPregunta === 'function') {
+                    mostrarPregunta();
+                } else if (typeof renderizarPreguntaActual === 'function') {
+                    renderizarPreguntaActual();
+                }
+                
+                // Forzar limpieza y actualización visual del cuestionario de campo
+                const txtPregunta = document.getElementById("texto-pregunta");
+                if (txtPregunta && ramificacion[0]) {
+                    txtPregunta.innerText = (idiomaActual === "es") ? ramificacion[0].texto_es : ramificacion[0].texto_en;
+                }
+                
+                // Reiniciar y limpiar copias viejas de los botones de SÍ y NO del taller
+                if (typeof inicializarOpciones === 'function') inicializarOpciones();
+            } else {
+                console.error("Error crítico: La base de datos de 11_generadores.js no está respondiendo en la memoria.");
+            }
+        }
+
 
               // =================================================================================
         // MOTOR DE PROCESAMIENTO DE EVIDENCIA FOTOGRÁFICA ILIMITADA PARA ASEGURADORAS
