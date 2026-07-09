@@ -684,6 +684,11 @@
                 const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
                 if (divReporteBtn) {
                     divReporteBtn.classList.remove("hidden");
+                // DISPARADOR DE EVIDENCIAS: Muestra el panel del micrófono e imágenes en la pantalla azul en cuanto se acaban las preguntas
+                    if (document.getElementById("contenedor-seguros-claims-flujo")) {
+                        document.getElementById("contenedor-seguros-claims-flujo").style.display = "block";
+                    }
+
                     const txtBtn = document.getElementById("txt-btn-reporte");
                     if (txtBtn) {
                         txtBtn.innerText = (idiomaActual === "es") 
