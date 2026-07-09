@@ -866,7 +866,7 @@
             const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
             if (divReporteBtn) divReporteBtn.classList.add("hidden");
 
-                           document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+                document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
             
             // COMPUERTA LOGICA FASE 2: Si el sistema es de Generadores y exige menú de marcas, dibuja los 4 botones interactivos con detonador nativo
             if (arbolDiagnostico["inicio"] && arbolDiagnostico["inicio"].opciones_menu) {
@@ -881,6 +881,7 @@
                 htmlBotones += `</div>`;
                 document.getElementById("contenedor-botones").innerHTML = htmlBotones;
             } else {
+
 
                 // Restablece los botones estándar de interacción grandes text-base de fábrica para el resto de los sistemas
                 document.getElementById("contenedor-botones").innerHTML = `
