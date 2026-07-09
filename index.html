@@ -1446,6 +1446,89 @@
                 }
             }
 
+               // MOTOR BILINGÜE MASTER: Traduce la HOJA 3 dinámicamente según la selección inicial del Técnico
+            const bloqueHoja3 = document.querySelector(".pagina-seguros-corporativa");
+            if (bloqueHoja3) {
+                if (idiomaActual === "es") {
+                    bloqueHoja3.innerHTML = `
+                        <div style="border-bottom: 3px double #1e3a8a; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+                            <div>
+                                <h2 style="font-size: 14px; font-weight: 900; color: #1e3a8a; margin: 0; text-transform: uppercase; letter-spacing: 0.05em;">INFORME AUTOMATIZADO DE CUMPLIMIENTO DE RECLAMOS DE SEGUROS</h2>
+                                <p style="font-size: 8px; color: #475569; margin: 2px 0 0 0; font-weight: 700;">CHULA VISTA RV EXPERT DIAGNOSTIC SUITE • MÓDULO DE LIQUIDACIÓN CORPORATIVA</p>
+                            </div>
+                            <div style="background: #1e3a8a; color: #ffffff; font-size: 9px; font-weight: 900; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">HOJA 3 / PAGE 3</div>
+                        </div>
+
+                        <div style="margin-bottom: 1.25rem;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 9px;">
+                                <tr style="background: #f1f5f9;">
+                                    <th style="border: 1px solid #cbd5e1; padding: 5px; text-align: left; font-weight: 900; color: #1e3a8a; width: 35%;">MANDATO DEL AJUSTADOR DE SEGUROS</th>
+                                    <th style="border: 1px solid #cbd5e1; padding: 5px; text-align: left; font-weight: 900; color: #334155;">DICTAMEN TÉCNICO CERTIFICADO Y EVIDENCIA REGULATORIA CORE</th>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; font-weight: 700; color: #1e293b; background: #f8fafc;">1. DESGLOSE DE HORAS FLAT-RATE (RVIA / ANSI)</td>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; color: #334155; line-height: 1.4;">Secuencia operativa de mano de obra cronometrada bajo definiciones estrictas del Manual de Tiempos Estándar RVIA. Incluye aislamiento primario del sistema, remoción de componentes obstructivos, reemplazo físico de la unidad, recalibración secundaria y pruebas extensas de validación hidrostática u óhmica bajo condiciones de carga simulada.</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; font-weight: 700; color: #1e293b; background: #f8fafc;">2. PATOLOGÍA DE DEGRADACIÓN DEL COMPONENTE</td>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; color: #334155; line-height: 1.4;">El componente en cuestión presenta fatiga térmica directa, circuito eléctrico abierto interno con parámetros de resistencia infinita o pérdida total de la integridad del sello mecánico debido a microfisuras en las cámaras de presión. Esta patología representa una falla súbita e interna del componente en lugar de negligencia, desgaste normal por el uso o falta de mantenimiento preventivo de rutina.</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; font-weight: 700; color: #1e293b; background: #f8fafc;">3. CÓDIGOS DE LEYES DE RECONSTRUCCIÓN FEDERALES</td>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; color: #b91c1c; font-weight: 700; line-height: 1.4;"><b>CUMPLIMIENTO CRÍTICO:</b> Negar el reemplazo físico de este componente específico viola los códigos de seguridad locales para viviendas móviles. Reensamblar la unidad sin el intercambio adecuado de la pieza desencadena un riesgo ambiental de severidad alta, exposure directa al fuego o destrucción estructural inmediata. La reinstalación del ensamblaje defectuoso constituye un peligro inmediato de responsabilidad legal para el técnico.</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div style="border: 1px solid #94a3b8; border-radius: 6px; padding: 0.75rem; background: #f8fafc; margin-bottom: 1.25rem;">
+                            <p style="font-size: 9px; font-weight: 900; color: #0f172a; margin: 0 0 0.4rem 0; text-transform: uppercase;">⚖️ DECLARACIÓN DE PÓLIZA LEGAL Y DEMANDA DE PRE-AUTORIZACIÓN:</p>
+                            <p style="font-size: 8.5px; color: #334155; margin: 0; line-height: 1.4; font-style: italic; text-align: justify;">
+                                Este documento sirve como una declaración técnica legal oficial presentada en nombre del propietario del vehículo para acelerar los protocolos de liquidación de reclamos de seguros. Todos los datos presentados aquí han sido verificados mediante multímetros Fluke certificados, pruebas de manómetros de gas hidrostáticos o diagnósticos computarizados. El centro de servicio exige la aprobación inmediata de la cobertura de la pieza para eliminar las tarifas de almacenamiento acumuladas y las responsabilidades por interrupción del sitio de campamento.
+                            </p>
+                        </div>
+                    `;
+                } else {
+                       bloqueHoja3.innerHTML = `
+                        <div style="border-bottom: 3px double #1e3a8a; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+                            <div>
+                                <h2 style="font-size: 14px; font-weight: 900; color: #1e3a8a; margin: 0; text-transform: uppercase; letter-spacing: 0.05em;">AUTOMATED INSURANCE CLAIM COMPLIANCE REPORT</h2>
+                                <p style="font-size: 8px; color: #475569; margin: 2px 0 0 0; font-weight: 700;">CHULA VISTA RV EXPERT DIAGNOSTIC SUITE • ENTERPRISE LIQUIDATION MODULE</p>
+                            </div>
+                            <div style="background: #1e3a8a; color: #ffffff; font-size: 9px; font-weight: 900; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">HOJA 3 / PAGE 3</div>
+                        </div>
+
+                        <div style="margin-bottom: 1.25rem;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 9px;">
+                                <tr style="background: #f1f5f9;">
+                                    <th style="border: 1px solid #cbd5e1; padding: 5px; text-align: left; font-weight: 900; color: #1e3a8a; width: 35%;">INSURANCE ADJUSTER MANDATE</th>
+                                    <th style="border: 1px solid #cbd5e1; padding: 5px; text-align: left; font-weight: 900; color: #334155;">CERTIFIED TECHNICAL DISCLOSURE & CORE REGULATORY EVIDENCE</th>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; font-weight: 700; color: #1e293b; background: #f8fafc;">1. LABOR FLAT-RATE breakdown (RVIA / ANSI)</td>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; color: #334155; line-height: 1.4;">Labor operational sequence timed under strict RVIA Standard Labor Manual definitions. Includes primary system isolation, obstruction removal, physical unit replacement, secondary recalibration, and extensive hydrostatic or ohmic validation testing under simulated load conditions.</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; font-weight: 700; color: #1e293b; background: #f8fafc;">2. COMPONENT DEGRADATION PATHOLOGY</td>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; color: #334155; line-height: 1.4;">The subject component presents direct thermal fatigue, internal electrical open circuit with infinite resistance parameters, or total loss of mechanical seal integrity due to micro-fissures on pressure chambers. This pathology represents sudden, internal component failure rather than neglect, wear-and-tear, or lack of routine maintenance.</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; font-weight: 700; color: #1e293b; background: #f8fafc;">3. STATE & FEDERAL RECONSTRUCTION ACT CODES</td>
+                                    <td style="border: 1px solid #cbd5e1; padding: 6px; color: #b91c1c; font-weight: 700; line-height: 1.4;"><b>CRITICAL COMPLIANCE:</b> Denying this specific physical component replacement violates localized mobile dwelling safety codes. Reassembling the unit without proper part exchange triggers a high-severity environmental hazard, direct fire exposure risk, or immediate structure destruction. Re-installation of the failed assembly constitutes an immediate technician liability hazard.</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div style="border: 1px solid #94a3b8; border-radius: 6px; padding: 0.75rem; background: #f8fafc; margin-bottom: 1.25rem;">
+                            <p style="font-size: 9px; font-weight: 900; color: #0f172a; margin: 0 0 0.4rem 0; text-transform: uppercase;">⚖️ LEGAL POLICY DISCLOSURE & PRE-AUTHORIZATION DEMAND:</p>
+                            <p style="font-size: 8.5px; color: #334155; margin: 0; line-height: 1.4; font-style: italic; text-align: justify;">
+                                This document serves as an official technical legal deposition submitted on behalf of the vehicle owner to expedite insurance claim settlement protocols. All data presented herein has been verified via certified Fluke multi-metering, hydrostatic gas gauge testing, or computerized diagnostics. The servicing center demands immediate part coverage approval to eliminate accrued storage fees and campsite disruption liabilities.
+                            </p>
+                        </div>
+                    `;
+                }
+            }
+      
+
             // MOTOR FOTOGRÁFICO AVANZADO: Inyecta las evidencias directamente dentro del contenedor de la HOJA 4
             const rejillaFotosPdf = document.getElementById("pdf-rejilla-fotos-aseguradora");
             if (rejillaFotosPdf) {
@@ -1517,7 +1600,8 @@
 
                     htmlFotosPagina += `
                         <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.5rem; background: #f8fafc; text-align: center;">
-                            <img src="${fotoBase64}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px; border: 1px solid #e2e8f0;">
+                                           <img src="${fotoBase64}" style="width: 100%; height: 175px; object-fit: contain; border-radius: 4px; border: 1px solid #e2e8f0; background: #020617;">
+
                             <p style="font-size: 8px; font-weight: 900; color: #1e293b; margin-top: 0.4rem; text-transform: uppercase;">
                                 ${idiomaActual === "es" ? "EVIDENCIA DE ACCESO Y OBSTRUCCIÓN DE CAMPO" : "FIELD OBSTRUCTION & ACCESSIBILITY PROOF"}
                             </p>
