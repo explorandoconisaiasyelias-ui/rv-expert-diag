@@ -52,26 +52,31 @@ const preguntasGeneradores = [
 ];
 
 function cargarPreguntasGeneradores() {
-    console.log("Iniciando Módulo Máster de Generadores en la interfaz.");
+    console.log("Sincronizando Módulo Máster de Generadores en memoria global.");
     
-    // 1. Enlazar la base de datos de Onan/Cummins/Generac con el flujo central de la suite
     if (typeof preguntasGeneradores !== 'undefined') {
+        // 1. Candado de Enrutamiento: Avisa al cerebro de la suite la lista exacta de preguntas a ejecutar
         ramificacion = preguntasGeneradores;
         preguntaActual = 0;
+        if (typeof preguntas !== 'undefined') preguntas = preguntasGeneradores;
         
-        // 2. Sincronizar el idioma actual y dibujar de golpe el Paso 1 en tu pantalla azul
+        // 2. Sincronizar el idioma actual y dibujar el Paso 1 de Onan en tu pantalla azul
         const txtPregunta = document.getElementById("texto-pregunta");
         if (txtPregunta) {
             txtPregunta.innerText = (idiomaActual === "es") ? ramificacion[0].texto_es : ramificacion[0].texto_en;
         }
 
-        // 3. Forzar el refresco de las etiquetas visuales (Badges) de la parte superior del diagnóstico
+        // 3. Forzar el cambio del Badge superior morado para que diga GENERADORES
         const badgeSistema = document.getElementById("badge-sistema") || document.getElementById("sistema-actual");
         if (badgeSistema) {
             badgeSistema.innerText = (idiomaActual === "es") ? ramificacion[0].sistema_es : ramificacion[0].sistema_en;
+        } else {
+            // Buscador alternativo por clase si tu badge no usa ID fijo
+            const lblSistema = document.querySelector(".text-xs.font-black.bg-blue-500\\/10") || document.querySelector("span[style*='letter-spacing']");
+            if (lblSistema) lblSistema.innerText = (idiomaActual === "es") ? ramificacion[0].sistema_es : ramificacion[0].sistema_en;
         }
 
-        // 4. Limpiar el menú anterior del taller y redibujar los botones de SÍ y NO en su estado original
+        // 4. Limpiar el menú y redibujar los botones de SÍ y NO en su estado original para el taller
         if (typeof mostrarOpciones === 'function') {
             mostrarOpciones();
         } else if (typeof renderizarOpciones === 'function') {
@@ -80,12 +85,12 @@ function cargarPreguntasGeneradores() {
             inicializarOpciones();
         }
         
-        // 5. Ocultar el menú de sistemas inferior para dejarle la pantalla limpia al mecánico
-        const menuSistemas = document.getElementById("contenedor-sistemas") || document.getElementById("menu-sistemas");
-        if (menuSistemas) menuSistemas.style.display = "none";
+        // 5. AUTO-SCROLL: Agarra la pantalla de la laptop o celular y la sube sola de golpe al inicio
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        console.log("Cuestionario de Generadores desplegado con éxito en el monitor.");
+        console.log("Cuestionario de Generadores enlazado y pantalla posicionada arriba.");
     } else {
         console.error("Error crítico: La base de datos de 11_generadores.js no está respondiendo en la memoria.");
     }
 }
+
