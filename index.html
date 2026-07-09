@@ -1644,31 +1644,23 @@
             }
         }
 
-        // DETONADOR MÁSTER MÓDULO 11: Enlaza el cuestionario masivo de Onan/Cummins con la pantalla azul
+        // DETONADOR MÁSTER MÓDULO 11: Enlaza el cuestionario masivo de Onan/Cummins con las variables nativas
         function cargarPreguntasGeneradores() {
-            if (typeof preguntasGeneradores !== 'undefined') {
-                ramificacion = preguntasGeneradores;
-                preguntaActual = 0;
-                
-                // Ejecuta el motor nativo de tu suite para dibujar la primera pregunta en pantalla
-                if (typeof mostrarPregunta === 'function') {
-                    mostrarPregunta();
-                } else if (typeof renderizarPreguntaActual === 'function') {
-                    renderizarPreguntaActual();
+            if (typeof moduloGeneradores !== 'undefined') {
+                arbolDiagnostico = moduloGeneradores;
+                const badge = document.getElementById("badge-texto");
+                if (badge) {
+                    badge.className = "bg-amber-600/20 text-amber-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-amber-500/30 uppercase";
                 }
-                
-                // Forzar limpieza y actualización visual del cuestionario de campo
-                const txtPregunta = document.getElementById("texto-pregunta");
-                if (txtPregunta && ramificacion[0]) {
-                    txtPregunta.innerText = (idiomaActual === "es") ? ramificacion[0].texto_es : ramificacion[0].texto_en;
-                }
-                
-                // Reiniciar y limpiar copias viejas de los botones de SÍ y NO del taller
-                if (typeof inicializarOpciones === 'function') inicializarOpciones();
+                reiniciar();
+                // RESORTE MAESTRO UX: Sube instantáneamente la vista a las preguntas altas
+                const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
+                if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
             } else {
-                console.error("Error crítico: La base de datos de 11_generadores.js no está respondiendo en la memoria.");
+                console.error("Error de laboratorio: moduloGeneradores no está cargado en memoria.");
             }
         }
+        
 
 
               // =================================================================================
