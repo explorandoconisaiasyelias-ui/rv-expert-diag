@@ -866,18 +866,34 @@
             const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
             if (divReporteBtn) divReporteBtn.classList.add("hidden");
 
-            document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+               document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
             
-            // Restablece los botones estándar de interacción grandes text-base
-            document.getElementById("contenedor-botones").innerHTML = `
-                <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-900/20 uppercase tracking-wider">
-                    👍 SÍ / YES
-                </button>
-                <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-rose-900/20 uppercase tracking-wider">
-                    👎 NO / NO
-                </button>
-            `;
+            // COMPUERTA LOGICA FASE 2: Si el sistema es de Generadores y exige menú de marcas, dibuja los 4 botones interactivos
+            if (arbolDiagnostico["inicio"] && arbolDiagnostico["inicio"].opciones_menu) {
+                let htmlBotones = `<div class="flex flex-col space-y-3 w-full">`;
+                arbolDiagnostico["inicio"].opciones.forEach(opc => {
+                    htmlBotones += `
+                        <button onclick="arbolDiagnostico.nodoActual='${opc.salto}'; reiniciar();" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
+                            <span>⚡</span> ${opc.texto_es}
+                        </button>
+                    `;
+                });
+                htmlBotones += `</div>`;
+                document.getElementById("contenedor-botones").innerHTML = htmlBotones;
+            } else {
+                // Restablece los botones estándar de interacción grandes text-base de fábrica para el resto de los sistemas
+                document.getElementById("contenedor-botones").innerHTML = `
+                    <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-900/20 uppercase tracking-wider">
+                        👍 SÍ / YES
+                    </button>
+                    <button onclick="procesarRespuesta('no')" id="btn-no" class="bg-rose-600 hover:bg-rose-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-rose-900/20 uppercase tracking-wider">
+                        👎 NO / NO
+                    </button>
+                `;
+            }
         }
+     
+            
            // Carga el sistema de 120V AC creando botones gigantes y salto automático forzado
         function cargarDistribucionAC() {
             arbolDiagnostico = moduloDistribucionAC;
