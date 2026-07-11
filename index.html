@@ -644,6 +644,17 @@
         };
         // FUNCIÓN MAESTRA CERTIFICADA: Motor único de procesamiento, reportes y tolerancia a fallos
         function procesarRespuesta(opcion) {
+                // DESTRABADOR MÁSTER MÓDULO 11: Detecta si el mecánico eligió una marca del menú de generadores, actualiza el nodo y avanza
+    if (opcion !== 'si' && opcion !== 'no') {
+        nodoActual = opcion;
+        if (typeof arbolDiagnostico !== 'undefined') {
+            arbolDiagnostico.nodoActual = opcion;
+            arbolDiagnostico.actual = opcion;
+        }
+        if (typeof reiniciar === 'function') reiniciar();
+        return; // Detiene la ejecución aquí para que no choque con el flujo estándar de abajo
+    }
+
             const datosNodo = arbolDiagnostico[nodoActual];
             if (!datosNodo) return;
 
