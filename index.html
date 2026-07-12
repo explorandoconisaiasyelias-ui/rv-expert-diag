@@ -644,8 +644,8 @@
         };
         // FUNCIÓN MAESTRA CERTIFICADA: Motor único de procesamiento, reportes y tolerancia a fallos
         function procesarRespuesta(opcion) {
-                // DESTRABADOR MÁSTER MÓDULO 11: Detecta si el mecánico eligió una marca del menú de generadores, actualiza el nodo y avanza
-    if (opcion !== 'si' && opcion !== 'no') {
+       // DESTRABADOR MÁSTER MÓDULO 11: Detecta si el mecánico eligió una marca del menú de generadores, actualiza el nodo y avanza
+        if (opcion !== 'si' && opcion !== 'no') {
         nodoActual = opcion;
         if (typeof arbolDiagnostico !== 'undefined') {
             arbolDiagnostico.nodoActual = opcion;
@@ -877,14 +877,14 @@
             const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
             if (divReporteBtn) divReporteBtn.classList.add("hidden");
 
-                       document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+                        document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
             
-            // COMPUERTA LOGICA FASE 2: Fuerza al motor original a inyectar el salto en la variable central de árbol y limpiar la pantalla
+            // COMPUERTA LOGICA FASE 2: Conmutador por marcas unificado con el procesador máster de respuestas (procesarRespuesta)
             if (arbolDiagnostico["inicio"] && arbolDiagnostico["inicio"].opciones_menu) {
                 let htmlBotones = `<div class="flex flex-col space-y-3 w-full">`;
                 arbolDiagnostico["inicio"].opciones.forEach(opc => {
                     htmlBotones += `
-                        <button onclick="nodoActual = '${opc.salto}'; if(typeof arbolDiagnostico !== 'undefined') { arbolDiagnostico.nodoActual = '${opc.salto}'; arbolDiagnostico.actual = '${opc.salto}'; } reiniciar();" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
+                        <button onclick="procesarRespuesta('${opc.salto}')" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
                             <span>⚡</span> ${opc.texto_es}
                         </button>
                     `;
