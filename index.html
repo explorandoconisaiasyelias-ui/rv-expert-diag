@@ -374,6 +374,7 @@
                 </div>
 
                 <div id="contenedor-botones" class="grid grid-cols-2 gap-3 mt-5">
+                    
                     <button onclick="procesarRespuesta('si')" id="btn-si" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-base font-black py-4 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-900/20 uppercase tracking-wider">
                         👍 SÍ / YES
                     </button>
@@ -381,6 +382,23 @@
                         👎 NO / NO
                     </button>
                 </div>
+
+            <!-- CONTENEDOR FÍSICO MÓDULO 11: Alineado al procesador máster de respuestas original (procesarRespuesta) -->
+            <div id="contenedor-marcas-generadores" class="hidden flex flex-col space-y-3 w-full mt-4">
+                <button onclick="procesarRespuesta('onan_qg_gas_lp');" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
+                    <span>⚡</span> 1. Cummins Onan QG (Quiet Gas / LP - 2800 / 4000 / 5500 / 7000)
+                </button>
+                <button onclick="procesarRespuesta('onan_qd_diesel');" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
+                    <span>⚡</span> 2. Cummins Onan QD (Quiet Diesel - 6000 / 7500 / 8000 / 10000 / 12500)
+                </button>
+                <button onclick="procesarRespuesta('generac_prim_quiet');" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
+                    <span>⚡</span> 3. Generac RV Series (Primepact / Quietpact - 40G / 55G / 50D / 75D)
+                </button>
+                <button onclick="procesarRespuesta('honda_inverter_master');" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
+                    <span>⚡</span> 4. Plantas Inverter Digitales de Estado Sólido (Honda EU / Champion)
+                </button>
+            </div>
+
             </div>
                 <!-- PANEL DE SELECTORES DE SISTEMA ALTERNO (Letras Grandes de Alta Visibilidad de Campo) -->
                 <div class="mt-6 pt-5 border-t border-gray-700/60 flex flex-col space-y-2.5 items-center">
@@ -1675,38 +1693,35 @@
             }
         }
 
-        // DETONADOR MÁSTER MÓDULO 11: Enlaza tus 210 líneas de Onan/Cummins actualizando el badge superior
+                // DETONADOR MÁSTER MÓDULO 11: Control físico de contenedores libre de bloqueos de Chrome
         function cargarPreguntasGeneradores() {
             if (typeof moduloGeneradores !== 'undefined') {
-                // 1. Candado de Identidad: Fuerza a la suite a reconocer la base de datos de Generadores
                 arbolDiagnostico = moduloGeneradores;
-                nodoActual = "inicio"; // Apunta al nodo de selección inicial de marcas
+                nodoActual = "inicio";
                 
-                // 2. Sincronización del Título: Fuerza al badge superior a cambiar su texto de forma mágica
+                // Sincroniza el título superior
                 const badge = document.getElementById("badge-texto");
                 if (badge) {
                     badge.innerText = (idiomaActual === "es") ? moduloGeneradores.badge_es : moduloGeneradores.badge_en;
                     badge.className = "bg-amber-600/20 text-amber-400 text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full border border-amber-500/30 uppercase";
                 }
                 
-                // 3. Ejecuta el motor nativo de Chula Vista para limpiar la pantalla y dibujar el menú
-                reiniciar();
+                // Muestra el menú de las marcas físico y oculta el SÍ/NO estándar temporalmente
+                document.getElementById("texto-pregunta").innerText = moduloGeneradores.inicio.pregunta_es;
+                const contenedorNormal = document.getElementById("contenedor-botones");
+                const contenedorMarcas = document.getElementById("contenedor-marcas-generadores");
                 
-                // 4. RESORTE MAESTRO UX: Sube instantáneamente la vista a las preguntas altas
+                if (contenedorNormal) contenedorNormal.classList.add("hidden");
+                if (contenedorMarcas) contenedorMarcas.classList.remove("hidden");
+                
+                // Resorte UX hacia arriba
                 const targetPregunta = document.getElementById("badge-texto") || document.getElementById("texto-pregunta");
-                if (targetPregunta) {
-                    targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-                console.log("Módulo 11 de Generadores encendido en modo Grafo con Sincronización de Badge.");
+                if (targetPregunta) targetPregunta.scrollIntoView({ behavior: "smooth", block: "center" });
             } else {
-                console.error("Error de laboratorio: El objeto moduloGeneradores de tus 210 líneas no está en memoria.");
+                console.error("Error: moduloGeneradores no detectado.");
             }
         }
-        
-        
-
+    
 
               // =================================================================================
         // MOTOR DE PROCESAMIENTO DE EVIDENCIA FOTOGRÁFICA ILIMITADA PARA ASEGURADORAS
