@@ -29,8 +29,14 @@ const moduloGeneradores = {
             { texto_es: "4. Plantas Inverter Digitales de Estado Sólido (Honda EU / Champion)", salto: "honda_inverter_master" }
         ],
         si: "onan_qg_gas_lp",
-        no: "onan_qd_diesel"
+        no: "onan_qd_diesel",
+        // CANDADO DE ENRUTAMIENTO FASE 2: Obliga al motor nativo a procesar el clic del menú interactivo de forma directa
+        onan_qg_gas_lp: "onan_qg_gas_lp",
+        onan_qd_diesel: "onan_qd_diesel",
+        generac_prim_quiet: "generac_prim_quiet",
+        honda_inverter_master: "honda_inverter_master"
     },
+
     // RAMIFICACIÓN ENTRADA 1: CUMMINS ONAN QG SERIES (GASOLINE / GAS LP COBERTURA ENCYCLOPEDIC)
     onan_qg_gas_lp: {
         pregunta_es: "LÍNEA CUMMINS ONAN QG (2800/4000/5500/7000 GASOLINA / LP):\n" +
