@@ -1,7 +1,8 @@
 // =================================================================================
 // MÓDULO 11: ENCICLOPEDIA FORENSE DE DIAGNÓSTICO INTEGRAL DE GENERADORES RV
-// ARQUITECTURA DE DESCARTE SECUENCIAL PARA DIAGNÓSTICO PRÁCTICO EN TALLER
-// CERO OMISIONES - EN ESTRICTO CUMPLIMIENTO CON LOS MANUALES DE SERVICIO OFICIALES
+// ARQUITECTURA MASTER DE GRAFOS INDEXADOS DE FLUJO CONTINUO (CERO OMISIONES)
+// EN ESTRICTO CUMPLIMIENTO CON LOS MANUALES CUMMINS ONAN, GENERAC, HONDA Y CHAMPION
+// BAJO LAS NORMATIVAS FEDERALES: RVIA/ANSI EGS-1, NEC ARTICLE 551 Y NFPA 1192
 // =================================================================================
 
 const moduloGeneradores = {
@@ -11,82 +12,100 @@ const moduloGeneradores = {
     badge_es: "GENERADORES Y PLANTAS DE LUZ (ONAN / CUMMINS / GENERAC)",
     badge_en: "FIELD GENERATORS & AUXILIARY POWER SUITE (ONAN / CUMMINS)",
     
-    // FILTRO TÉCNICO DE ADMISIÓN 1: SELECCIÓN DE LÍNEA GASOLINA / LP
+    // PASO 1: LÍNEA CUMMINS ONAN QG (GASOLINE / GAS LP COBERTURA ENCYCLOPEDIC)
     inicio: {
-        pregunta_es: "FILTRO DE INICIO DE DIAGNÓSTICO: ¿El generador instalado en la unidad motorhome que va a revisar pertenece a la línea CUMMINS ONAN QG (Quiet Gas / Gas LP de los Modelos 2800, 4000, 5500 o 7000)?",
-        pregunta_en: "INITIAL DIAGNOSTIC FILTER: Does the generator installed in the RV unit belong to the CUMMINS ONAN QG line (Quiet Gas / LP Gas Models 2800, 4000, 5500, or 7000)?",
-        si: "onan_qg_banco_fallas", // Si es Onan QG, lo mete directo a su diagnóstico de campo
-        no: "filtro_onan_qd_diesel"  // Si no, salta al filtro del motor diésel
-    },
-
-    // FILTRO TÉCNICO DE ADMISIÓN 2: SELECCIÓN DE LÍNEA DIÉSEL
-    filtro_onan_qd_diesel: {
-        pregunta_es: "FILTRO DE INICIO DE DIAGNÓSTICO: ¿La planta instalada en el vehículo es de la línea pesada CUMMINS ONAN QD (Quiet Diesel de los Modelos 6000, 7500, 8000, 10000 o 12500 para unidades Clase A)?",
-        pregunta_en: "INITIAL DIAGNOSTIC FILTER: Is the power unit a heavy CUMMINS ONAN QD (Quiet Diesel Models 6000, 7500, 8000, 10000, or 12500 for Class A motorhomes)?",
-        si: "onan_qd_banco_fallas", // Si es Diésel, abre su enciclopedia específica
-        no: "filtro_generac_rv"       // Si no, pasa a revisar si es Generac
-    },
-
-    // BANCO DE DIAGNÓSTICO FORENSE 1: CUMMINS ONAN QG (GASOLINA / GAS LP)
-    onan_qg_banco_fallas: {
-        pregunta_es: "CUMMINS ONAN QG (2800/4000/5500/7000): ¿El motor auxiliar da marcha con fuerza (Crank) pero NO enciende al soltar el interruptor, presenta ahogamiento por combustible crudo con petardeos violentos (Backfiring) por el escape, o el switch remoto de la cabina destella indicando los códigos 'Fault Code 36' (Stopped Without Command), 'Fault Code 14' (Overfrequency) o 'Fault Code 13' (Undervoltage)?",
-        pregunta_en: "CUMMINS ONAN QG (2800/4000/5500/7000): Does the auxiliary engine crank with high torque but fail to catch upon switch release, flood with raw fuel causing violent exhaust backfires, or flash microprocessor system codes 'Fault Code 36' (Stopped Without Command), 'Fault Code 14' (Overfrequency), or 'Fault Code 13' (Undervoltage)?",
+        pregunta_es: "CUMMINS ONAN QG SERIES (2800/4000/5500/7000):\n" +
+            "¿El generador auxiliar de gasolina o gas LP presenta fallas críticas de encendido o regulación?\n" +
+            "SÍNTOMAS DE CAMPO EXAMINADOS POR EL TÉCNICO EN EL TALLER:\n" +
+            "- El motor genera torque de marcha (Crank) con fuerza pero NO retiene el arranque al soltar el switch.\n" +
+            "- Presenta explosiones térmicas violentas (Backfiring) por el escape o ahogamiento por combustible crudo.\n" +
+            "- El interruptor o panel remoto parpadea indicando códigos de diagnóstico pericial Nivel 2:\n" +
+            "  'Fault Code 36' (Engine Stopped Without Command), 'Fault Code 14' (Overfrequency / Alerta de AVR)\n" +
+            "  o 'Fault Code 13' (Undervoltage / Pérdida total de autoexcitación en el campo magnético del estator).",
+            
+        pregunta_en: "CUMMINS ONAN QG PRODUCT LINE (2800/4000/5500/7000 GASOLINE / LP):\n" +
+            "Does the auxiliary internal combustion engine exhibit critical field starting or voltage regulation failures?\n" +
+            "FIELD VISUAL SYMPTOMS DETECTED BY SPECIALIST INSIDE THE SERVICE BAY:\n" +
+            "- Engine cranks with high starter torque but immediately stalls out upon manual switch release.\n" +
+            "- Suffers from severe backfiring exhaust pops or raw fuel engine flooding behaviors.\n" +
+            "- Remote dash switch flashes Level 2 forensically recorded microprocessor system codes:\n" +
+            "  'Fault Code 36' (Engine Stopped Without Command), 'Fault Code 14' (Overfrequency / AVR anomaly),\n" +
+            "  or 'Fault Code 13' (Undervoltage / Total loss of residual self-excitation inside stator windings).",
+            
         sistema_es: "SISTEMA DE GAS/LP COMBUSTIÓN Y AC AUTOMATIC VOLTAGE REGULATION (ONAN QG)",
         sistema_en: "GAS/LP COMBUSTION & AC AUTOMATIC VOLTAGE REGULATION MODULE (ONAN QG)",
-        norma_es: "Incumplimiento severo de la norma de seguridad federal ANSI / RVIA EGS-1 para plantas auxiliares y violación de las directrices de suministro de fluidos y tuberías de gas LP exigidas por la NFPA 1192.",
-        norma_en: "Severe non-compliance with federal ANSI / RVIA EGS-1 auxiliary engine generator regulations and violation of liquid/gaseous fuel system routing mandates under NFPA 1192.",
-        aislamiento_es: "DESCARTE EN TALLER: 1. Prueba hidrostática con manómetro digital revela presión por debajo de 2 PSI por obstrucción extrema de barniz en espreas del carburador. 2. En gas LP, el solenoide de corte presenta congelamiento estructural interno. 3. Monitoreo óhmico con multímetro Fluke certificado en los anillos colectores del rotor (Slip Rings) registra resistencia infinita, confirmando devanados fundidos o escobillas de carbón falladas. 4. Medición de frecuencia muestra fluctuaciones asimétricas fuera de 60Hz.",
-        aislamiento_en: "SHOP DIAGNOSTICS: 1. Hydrostatic digital pressure tracking reveals a critical drop below 2 PSI induced by fuel varnish layers inside carburetor jets. 2. On LP models, the lock-off solenoid exhibits mechanical freeze. 3. Ohmic metering across rotor slip rings via certified Fluke multi-metering registers infinite resistance, confirming open circuit field windings or carbon brush sub-assembly structural collapse. 4. AC tracking yields drifting outside 60Hz.",
-        si: "filtro_onan_qd_diesel", // Al responder, continúa el flujo de descarte de forma infinita
-        no: "filtro_onan_qd_diesel"
+        
+        norma_es: "Incumplimiento crítico de la norma federal de seguridad ANSI / RVIA EGS-1 para plantas auxiliares de energía\n" +
+            "y violación directa de las directrices de suministro de fluidos, venteos y líneas de gas LP de la norma NFPA 1192.",
+        norma_en: "Critical non-compliance with federal ANSI / RVIA EGS-1 auxiliary engine generator regulations and\n" +
+            "direct violation of fuel line routing, venting, and liquid/gaseous LP gas installation mandates under NFPA 1192.",
+            
+        aislamiento_es: "PROTOCOLO DE AISLAMIENTO FORENSE CON INSTRUMENTACIÓN DE LABORATORIO:\n" +
+            "1. Prueba hidrostática con manómetro digital Fluke en el riel de alimentación aísla presión crítica\n" +
+            "   por debajo de 2 PSI (Especificación de fábrica: 4.5 PSI) por acumulación extrema de barniz gomoso en espreas.\n" +
+            "2. En variantes de Gas LP, el solenoide de corte presenta obstrucción interna o congelamiento estructural por gomas.\n" +
+            "3. Monitoreo óhmico certificado directo en los anillos colectores del rotor (Slip Rings) registra resistencia infinita\n" +
+            "   (Circuito Abierto), confirmando devanados de bobina fundidos o conjunto de escobillas de carbón destruido.\n" +
+            "4. Medición de frecuencia con osciloscopio muestra fluctuaciones asimétricas fuera del rango operativo de 60Hz.",
+            
+        aislamiento_en: "FORENSIC ENGINEERING ANALYSIS AND FIELD DIAGNOSTIC PROCEDURES:\n" +
+            "1. Hydrostatic digital gauge pressure tracking on the fuel line isolates a critical drop under 2 PSI\n" +
+            "   (Factory Spec: 4.5 PSI) induced by high-severity fuel varnish degradation layers inside carburetor main jets.\n" +
+            "2. On gaseous LP models, the structural liquid fuel lock-off solenoid exhibits heavy soot fouling or mechanical freeze.\n" +
+            "3. Ohmic evaluation across rotor slip rings via certified multi-metering registers infinite resistance parameters,\n" +
+            "   confirming a destructive open circuit winding pathology or carbon brush brush sub-assembly structural collapse.\n" +
+            "4. AC frequency tracking yields asymmetric harmonic drifting completely outside the stable 60Hz operational envelope.",
+            
+        si: "paso2", // Enlace de flujo lineal continuo perfecto hacia la línea pesada Quiet Diesel
+        no: "paso2"
     },
-    // FILTRO TÉCNICO DE ADMISIÓN 3: SELECCIÓN DE LÍNEA GENERAC RV FIXED
-    filtro_generac_rv: {
-        pregunta_es: "FILTRO DE INICIO DE DIAGNÓSTICO: ¿El generador montado de fábrica de forma fija en el compartimento del chasis pertenece a la línea GENERAC RV SERIES (Modelos Quietpact o Primepact 40G, 55G, 50D, o 75D de gasolina o diésel auxiliar)?",
-        pregunta_en: "INITIAL DIAGNOSTIC FILTER: Does the factory chassis-mounted power unit belong to the GENERAC RV SERIES (Quietpact or Primepact Models 40G, 55G, 50D, or 75D gasoline or auxiliary diesel variants)?",
-        si: "generac_rv_banco_fallas", // Si es Generac, lo enruta a su enciclopedia masiva
-        no: "onan_honda_inverter_master" // Si no, por descarte final, es una planta Inverter Honda/Champion
-    },
-
-    // BANCO DE DIAGNÓSTICO FORENSE 2: CUMMINS ONAN QD (QUIET DIESEL COBERTURA TOTAL DE CLASE A)
-    onan_qd_banco_fallas: {
+    // PASO 2: LÍNEA PESADA CUMMINS ONAN QD (QUIET DIESEL COBERTURA ENCYCLOPEDIC CLASE A)
+    paso2: {
         pregunta_es: "CUMMINS ONAN QD SERIES (6000/7500/8000/10000/12500 DIESEL):\n" +
-            "¿La planta pesada diésel presenta paros inesperados bajo demanda, fallas de inyección o colapsos en caliente?\n" +
-            "SÍNTOMAS DE CAMPO EXAMINADOS POR EL TÉCNICO EN EL TALLER:\n" +
-            "- El motor arranca de forma normal pero la computadora de a bordo aborta la marcha a los pocos segundos (3 a 5 segundos).\n" +
-            "- Despide una densa cortina de humo blanco por el escape acompañada de ruidos mecánicos de golpeteo por burbujas de aire (Cavitación).\n" +
-            "- El sistema corta el suministro de corriente el milisegundo exacto en que se acoplan los compresores de los aires acondicionados de la unidad.\n" +
-            "- Registra en la interfaz de destellos digitales 'Fault Code 32' (Low Oil pressure switch), 'Fault Code 45' (Speed Sense Lost / Pérdida de pulsos del sensor magnético) o 'Fault Code 27' (Voltage Sense Lost / Pérdida absoluta de retroalimentación AC).",
+            "¿La planta Quiet Diesel presenta paros imprevistos severos o colapso de inyección en caliente?\n" +
+            "SÍNTOMAS DE CAMPO REGISTRADOS EN TALLER:\n" +
+            "- El motor enciende pero el microprocesador aborta la marcha a los pocos segundos (3 a 5 segundos exactos).\n" +
+            "- Despide una densa cortina de humo blanco por el escape acompañada de golpeteos metálicos por cavitación.\n" +
+            "- La planta corta el suministro AC el milisegundo exacto en que se acoplan los compresores de los aires acondicionados.\n" +
+            "- El interruptor destella de forma pericial indicando 'Fault Code 32' (Low Oil Pressure Switch),\n" +
+            "  'Fault Code 45' (Speed Sense Lost / Pérdida de captura magnética) o 'Fault Code 27' (Voltage Sense Lost).",
             
         pregunta_en: "CUMMINS ONAN QD SERIES (6000/7500/8000/10000/12500 DIESEL):\n" +
-            "Does the heavy diesel power plant present unexpected uncommanded shutdowns, injection failures, or thermal saturation colapses?\n" +
-            "FIELD VISUAL SYMPTOMS DETECTED BY SPECIALIST INSIDE THE SERVICE BAY:\n" +
-            "- Engine catches properly but the control board microprocessor aborts cranking operations within a tight 3 to 5-second safety window.\n" +
-            "- Emits a heavy continuous shroud of white smoke through exhaust shroud paired with loud fuel system cavitation knocking noise.\n" +
-            "- High voltage output drops completely offline the exact millisecond the RV roof air conditioner heavy compressors engage under load.\n" +
-            "- Microprocessor diagnostic panel permanently registers 'Fault Code 32' (Low Oil Pressure), 'Fault Code 45' (Speed Sense Lost / Total loss of frequency feedback), or 'Fault Code 27' (Voltage Sense Lost / AC feedback interruption).",
+            "Does the heavy Quiet Diesel power plant present uncommanded shutdowns or high-temperature injection failures?\n" +
+            "FIELD VISUAL SYMPTOMS DETECTED BY SPECIALIST:\n" +
+            "- Engine catches properly but the control board logic aborts cranking operations within a 3 to 5-second window.\n" +
+            "- Emits a heavy shroud of white smoke through the exhaust paired with intensive fuel system cavitation knocking.\n" +
+            "- High voltage drops completely offline the exact millisecond the RV roof air conditioner compressors engage.\n" +
+            "- Microprocessor flashes 'Fault Code 32' (Low Oil Pressure), 'Fault Code 45' (Speed Sense Lost),\n" +
+            "  or 'Fault Code 27' (Voltage Sense Lost / AC distribution feedback signal interruption).",
             
         sistema_es: "SISTEMA DE MONITOREO DIGITAL Y CAPTORES DE VELOCIDAD MAGNETICA DIESEL (ONAN QD)",
         sistema_en: "DIGITAL MONITORING & DIESEL SPEED CAPTORS MODULE (ONAN QD)",
         
-        norma_es: "Violación directa de los protocolos de integridad mecánica, control rígido de sobrecorriente y distribución eléctrica estipulados por el Artículo 551 del Código Eléctrico Nacional (NEC).",
-        norma_en: "Direct violation of mechanical safety integrity, overcurrent protection parameters, and RV electrical power distribution architecture governed by National Electrical Code (NEC) Article 551.",
-        
-        aislamiento_es: "PROTOCOLO DE LABORATORIO EN EL VEHÍCULO:\n" +
-            "1. Monitoreo pericial del sensor magnético de velocidad (Quadrature Speed Sensor) confirma pérdida total de pulsos de frecuencia digitales hacia el inversor interno por agrietamiento de la carcasa plástica por fatiga térmica severa.\n" +
-            "2. Prueba hidrostática del switch de presión de aceite revela cortocircuito franco a tierra con el motor completamente apagado, indicando el colapso irreversible del diafragma interno por calor extremo.\n" +
-            "3. Inspección óhmica del devanado auxiliar de captura muestra caídas de voltaje de excitación por debajo de parámetros nominales de fábrica.",
+        norma_es: "Violación directa de los protocolos federales de integridad mecánica, control rígido de sobrecorriente\n" +
+            "y arquitectura de distribución eléctrica estipulados por el Artículo 551 del Código Eléctrico Nacional (NEC).",
+        norma_en: "Direct violation of mechanical safety integrity, overcurrent protection parameters, and\n" +
+            "RV auxiliary electrical power distribution lines governed by National Electrical Code (NEC) Article 551.",
+            
+        aislamiento_es: "PROTOCOLO DE AISLAMIENTO FORENSE CON INSTRUMENTACIÓN DE LABORATORIO:\n" +
+            "1. Monitoreo pericial del sensor de velocidad (Quadrature Speed Sensor) confirma pérdida total de pulsos digitales\n" +
+            "   hacia el inversor interno debido a agrietamientos estructurales macroscópicos en la carcasa por fatiga térmica.\n" +
+            "2. Prueba hidrostática del switch de presión de aceite reveals un cortocircuito franco a chasis ground con el motor\n" +
+            "   completamente estacionario, indicando el colapso irreversible del diafragma interno por calor extremo.\n" +
+            "3. Rastreo óhmico en el devanado auxiliar de captura aísla caídas críticas de voltaje de autoexcitación remanente.",
             
         aislamiento_en: "FORENSIC ENGINEERING ANALYSIS AND FIELD DIAGNOSTIC PROCEDURES:\n" +
-            "1. Field technical analysis on the magnetic quadrature speed sensor confirms total loss of digital frequency feedback pulses to the internal inverter controller due to thermal casing micro-fissures and aggregate heat fatigue.\n" +
-            "2. Hydrostatic oil pressure switch engineering test reveals a continuous direct short circuit to chassis ground with engine stationary, indicating structural collapse of the internal rubber diaphragm under extreme heat load.\n" +
-            "3. Aux AC sense winding tracking isolates critical excitation signal decay underneath operational parameters mandated by manufacturer spec.",
+            "1. Field technical analysis on the magnetic quadrature speed sensor confirms total loss of frequency feedback\n" +
+            "   pulses to the internal inverter controller induced by severe thermal degradation casing micro-fissures.\n" +
+            "2. Hydrostatic oil pressure switch engineering test reveals a continuous direct short circuit to ground\n" +
+            "   with engine stationary, isolating structural breakdown of internal diaphragm under extreme operating heat.\n" +
+            "3. Aux AC sense winding tracking isolates critical excitation signal decay underneath factory operational parameters.",
             
-        si: "filtro_generac_rv", // Continúa limpiamente el flujo secuencial hacia el filtro de Generac
-        no: "filtro_generac_rv"
+        si: "paso3", // Enlace de flujo lineal continuo perfecto hacia el bloque masivo de Generac
+        no: "paso3"
     },
-    // BANCO DE DIAGNÓSTICO FORENSE 3: LÍNEA GENERAC RV (QUIETPACT / PRIMEPACT COBERTURA ENCYCLOPEDIC DE GAS / LP)
-    generac_rv_banco_fallas: {
+    // PASO 3: LÍNEA GENERAC RV (QUIETPACT / PRIMEPACT COBERTURA ENCYCLOPEDIC DE GAS / LP)
+    paso3: {
         pregunta_es: "SISTEMAS GENERAC RV SERIES (PRIMEPACT / QUIETPACT 40G/55G/50D/75D):\n" +
             "¿El generador de montaje fijo presenta fallas estacionales de marcha, inestabilidad severa o cortes lógicos del sistema?\n" +
             "SÍNTOMAS DE CAMPO EXAMINADOS POR EL TÉCNICO EN EL TALLER:\n" +
@@ -110,18 +129,18 @@ const moduloGeneradores = {
         norma_en: "Severe non-compliance with ANSI / RVIA EGS-1 automated speed governor frequency stabilization regulations, mobile power mechanical assembly guidelines, and mobile combustion emissions control mandates.",
         
         aislamiento_es: "PROTOCOLO DE AISLAMIENTO FORENSE CON INSTRUMENTACIÓN DE LABORATORIO:\n" +
-            "1. Descarte forense con multímetro Fluke certificado: Medición óhmica directa en los devanados del estator principal (Main Stator Winding D) registra un cortocircuito franco entre espiras, anulando por completo la retroalimentación de voltaje hacia el módulo regulador automático (AVR).\n" +
+            "1. Descarte forense con multímetro Fluke certificado: Medición óhmica directa en los devanados del estator principal (Main Stator Winding D) registra un cortocircuito franco entre espiras,首, de modo que anula por completo la retroalimentación de voltaje hacia el módulo regulador automático (AVR).\n" +
             "2. El sensor bimetálico de corte térmico interrumpe la inyección de control lógico por sobrecalentamiento crítico del bloque motor, provocado por acumulación masiva de hollín en las aletas de enfriamiento y obstrucción de aire asistido por el fenómeno Exhaust Air Reflux.",
             
         aislamiento_en: "FORENSIC ENGINEERING ANALYSIS AND FIELD DIAGNOSTIC PROCEDURES:\n" +
             "1. Certified Fluke multimeter tracking executed across main stator winding D loops isolates a direct internal inter-turn short circuit, permanently neutralizing the required residual self-excitation voltage feedback path to the electronic AVR board.\n" +
             "2. Bimetallic high-temperature safety switch cuts control board operating logic due to cylinder head thermal saturation and core block overheating induced by intensive shroud dirt fouling and cooling airflow restriction through Exhaust Air Reflux paths.",
             
-        si: "onan_honda_inverter_master", // Avanza limpiamente y de forma corrida al siguiente eslabón (Inverter)
-        no: "onan_honda_inverter_master"
+        si: "paso4", // Avanza limpiamente y de forma corrida al siguiente eslabón (Inverter)
+        no: "paso4"
     },
-    // BANCO DE DIAGNÓSTICO FORENSE 4: TECNOLOGÍA INVERTER DE ESTADO SÓLIDO (HONDA EU / CHAMPION PORTÁTIL INTEGRADA)
-    onan_honda_inverter_master: {
+    // PASO 4: TECNOLOGÍA INVERTER DE ESTADO SÓLIDO (HONDA EU / CHAMPION COBERTURA ENCYCLOPEDIC)
+    paso4: {
         pregunta_es: "SISTEMAS INVERTER COMPACTOS (HONDA EU3000i/EU7000is / CHAMPION):\n" +
             "¿La planta digital portátil presenta bloqueos automáticos bajo demanda térmica o inestabilidad severa de RPM?\n" +
             "SÍNTOMAS DE CAMPO EXAMINADOS POR EL TÉCNICO EN EL TALLER:\n" +
@@ -148,9 +167,9 @@ const moduloGeneradores = {
             
         aislamiento_en: "FORENSIC ENGINEERING DIAGNOSTICS AND HIGH-VOLTAGE LABORATORY PROCEDURES:\n" +
             "1. Insulation resistance testing executed via industrial megohmmeter directly isolates an internal structural thermal short circuit pathology directly within the silicon cells of the solid-state digital inverter power module (IGBT Bridge assembly).\n" +
-            "2. The control microprocessor permanently blocks operations under load due to an infinite resistance parameters tracking on core AC current-sensing feedback loops, rendering the alternative high-frequency current switching phases completely inoperable.",
+            "2. The control microprocessor permanently blocks operations under load due to an infinite resistance parameters tracking on core AC current-sensing feedback loops, rendering the high-frequency alternative current switching phases completely inoperable.",
             
-        es_final: true // <--- CANDADO MAESTRO NATIVO ASENTADO: Abre tu panel de evidencias y tu reporte corporativo bilingüe
+        es_final: true // <--- CANDADO MAESTRO NATIVO ASENTADO: Abre tu ventana de evidencias y tu reporte corporativo bilingüe
     }
 }; // <--- LLAVE DE CIERRE CENTRAL MATEMÁTICO DE TODA LA BASE DE DATA DE GENERADORES RV
 // =================================================================================
@@ -162,7 +181,7 @@ function cargarPreguntasGeneradores() {
     if (typeof moduloGeneradores !== 'undefined') {
         // 1. Candado de Sincronización Máster: Avisa al esqueleto el objeto real que debe leer al avanzar
         arbolDiagnostico = moduloGeneradores;
-        nodoActual = "inicio"; // Fuerza a la app a pararse en el Filtro Secuencial Técnico Inicial
+        nodoActual = "inicio"; // Fuerza a la app a pararse en el Punto de Admisión Inicial
         
         // 2. Disparador de refresco e idioma nativo de la suite de Chula Vista
         if (typeof reiniciar === 'function') {
@@ -187,7 +206,7 @@ function cargarPreguntasGeneradores() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        console.log("Módulo 11 de Generadores operando con sincronización de identidad, filtro secuencial y título.");
+        console.log("Módulo 11 de Generadores operando con sincronización de identidad, flujo continuo y título.");
     } else {
         console.error("Error crítico de laboratorio: El objeto moduloGeneradores no está definido en la memoria.");
     }
