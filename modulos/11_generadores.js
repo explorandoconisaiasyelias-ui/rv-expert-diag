@@ -1,6 +1,5 @@
 // =================================================================================
 // MÓDULO 11: ENCICLOPEDIA FORENSE DE DIAGNÓSTICO INTEGRAL DE GENERADORES RV
-// ESTRUCTURA DE ARBOL INDEXADO CON MENÚ DE ADMISIÓN POR MODELO Y MARCA DE FÁBRICA
 // EN ESTRICTO CUMPLIMIENTO CON LOS MANUALES CUMMINS ONAN, GENERAC, HONDA Y CHAMPION
 // BAJO LAS NORMATIVAS FEDERALES: RVIA/ANSI EGS-1, NEC ARTICLE 551 Y NFPA 1192
 // =================================================================================
@@ -73,10 +72,10 @@ const moduloGeneradores = {
             "   (Factory Spec: 4.5 PSI) induced by high-severity fuel varnish degradation layers inside carburetor main jets.\n" +
             "2. On gaseous LP models, the structural liquid fuel lock-off solenoid exhibits heavy soot fouling or mechanical freeze.\n" +
             "3. Ohmic evaluation across rotor slip rings via certified multi-metering registers infinite resistance parameters,\n" +
-            "   confirming a destructive open circuit winding pathology or carbon brush sub-assembly structural collapse.\n" +
+            "   confirming a destructive open circuit winding pathology or carbon brush brush sub-assembly structural collapse.\n" +
             "4. AC frequency tracking yields asymmetric harmonic drifting completely outside the stable 60Hz operational envelope.",
             
-        si: "onan_qd_diesel", // Cable de salto de la red indexada hacia la línea Quiet Diesel
+        si: "onan_qd_diesel", // Engancha de forma indexada con el siguiente bloque diésel masivo
         no: "onan_qd_diesel"
     },
     // RAMIFICACIÓN ENTRADA 2: LÍNEA PESADA CUMMINS ONAN QD (QUIET DIESEL COBERTURA ENCYCLOPEDIC CLASE A)
@@ -121,7 +120,7 @@ const moduloGeneradores = {
             "   with engine stationary, indicating structural collapse of the internal rubber diaphragm under extreme heat.\n" +
             "3. Aux AC sense winding tracking isolates critical excitation signal decay underneath operational parameters.",
             
-        si: "generac_prim_quiet", // Enlace de flujo infinito hacia el nodo de Generac
+        si: "generac_prim_quiet", // Siguiente eslabón de la red indexada hacia la línea Generac
         no: "generac_prim_quiet"
     },
     // RAMIFICACIÓN ENTRADA 3: LÍNEA GENERAC RV (QUIETPACT / PRIMEPACT COBERTURA ENCYCLOPEDIC DE GAS / LP)
@@ -151,7 +150,7 @@ const moduloGeneradores = {
             
         aislamiento_es: "PROTOCOLO DE AISLAMIENTO FORENSE CON INSTRUMENTACIÓN DE LABORATORIO:\n" +
             "1. Descarte forense con multímetro Fluke: Medición en los devanados del estator principal (Main Stator Winding D)\n" +
-            "   registra cortocircuito franco entre espiras,首, anulando la retroalimentación hacia el módulo AVR.\n" +
+            "   registra cortocircuito franco entre espiras, anulando la retroalimentación hacia el módulo AVR.\n" +
             "2. El sensor bimetálico de corte térmico interrumpe la inyección lógica por sobrecalentamiento del bloque\n" +
             "   causado por acumulación masiva de hollín y obstrucción de aire asistido por el fenómeno Exhaust Air Reflux.",
             
@@ -200,10 +199,9 @@ const moduloGeneradores = {
             "2. The control board permanently blocks operations under load due to infinite resistance on core AC current-sensing\n" +
             "   loops, rendering the high-frequency alternative current switching phase completely inoperable.",
             
-        es_final: true // <--- CANDADO MAESTRO NATIVO CORREGIDO: Activa de forma real el álbum y tus 4 hojas de seguros
+        es_final: true // <--- CANDADO MAESTRO NATIVO CORREGIDO: Abre tu ventana de evidencias y tus 4 hojas de reporte
     }
-}; // <--- AQUÍ SE CIERRA DE FORMA MATEMÁTICA Y DEFINITIVA TODA TU ENCICLOPEDIA DE GENERADORES RV (210+ LÍNEAS)
-
+}; // <--- LLAVE DE CIERRE CENTRAL MATEMÁTICO DE TODA LA BASE DE DATOS DE GENERADORES
 // =================================================================================
 // FUNCIÓN MÁSTER DE ACCIÓN COMERCIAL (CONEXIÓN Y SINCRO DE IDENTIDAD CON INDEX.HTML)
 // =================================================================================
