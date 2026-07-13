@@ -895,21 +895,17 @@
             const divReporteBtn = document.getElementById("contenedor-reporte-pdf");
             if (divReporteBtn) divReporteBtn.classList.add("hidden");
 
-                        document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
+
+           document.getElementById("texto-pregunta").innerText = arbolDiagnostico["inicio"]["pregunta_" + idiomaActual];
             
-            // COMPUERTA LOGICA FASE 2: Conmutador por marcas unificado con el procesador máster de respuestas (procesarRespuesta)
+            // COMPUERTA LOGICA FASE 2: Activa el contenedor físico blindado de marcas de fondo azul y apaga el SÍ/NO estándar
             if (arbolDiagnostico["inicio"] && arbolDiagnostico["inicio"].opciones_menu) {
-                let htmlBotones = `<div class="flex flex-col space-y-3 w-full">`;
-                arbolDiagnostico["inicio"].opciones.forEach(opc => {
-                    htmlBotones += `
-                        <button onclick="procesarRespuesta('${opc.salto}')" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3.5 px-4 rounded-xl transition border border-amber-500/20 shadow-md text-xs uppercase tracking-wider text-left flex items-center gap-2 active:scale-95 duration-150">
-                            <span>⚡</span> ${opc.texto_es}
-                        </button>
-                    `;
-                });
-                htmlBotones += `</div>`;
-                document.getElementById("contenedor-botones").innerHTML = htmlBotones;
+                const contenedorNormal = document.getElementById("contenedor-botones");
+                const contenedorMarcas = document.getElementById("contenedor-marcas-generadores");
+                if (contenedorNormal) contenedorNormal.classList.add("hidden");
+                if (contenedorMarcas) contenedorMarcas.classList.remove("hidden");
             } else {
+
 
                 
 
